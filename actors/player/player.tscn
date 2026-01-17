@@ -385,7 +385,7 @@ _data = {
 &"walk_right": SubResource("Animation_jw06o")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
 collision_layer = 2
 script = ExtResource("1_22mku")

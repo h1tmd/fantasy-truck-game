@@ -24,6 +24,10 @@ LevelManager="*res://scenes/components/level_manager.tscn"
 
 project/assembly_name="Godot-simple-rpg"
 
+[global_group]
+
+player="group for getting reference to player/s"
+
 [input]
 
 move_up={
