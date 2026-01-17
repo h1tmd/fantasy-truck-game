@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://csa6wbw37bdv4"]
+
+[ext_resource type="Script" uid="uid://p4fmrjq3q8w8" path="res://actors/components/location_area.gd" id="1_35ibg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vjvj1"]
+
+[node name="Location Area" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_35ibg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vjvj1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
