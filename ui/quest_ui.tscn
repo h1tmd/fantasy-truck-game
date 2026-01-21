@@ -69,4 +69,4 @@ text = "Status"
 [node name="Status" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
-text = "Quest Name"
+text = "Quest Status"

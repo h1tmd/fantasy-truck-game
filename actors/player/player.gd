@@ -112,7 +112,13 @@ func generate_quest(_prev_loc: Location) -> void:
 
 func on_location_arrived(location: Location) -> void:
 	if current_quest != null:
-		if current_quest.location == location:
+		# Start quest upon arriving ang starting location
+		if current_quest.status == Quest.QuestStatus.READY and current_quest.starting_location == location:
+			current_quest.status = Quest.QuestStatus.ONGOING
+			print("Quest started")
+		
+		# End the quest
+		elif current_quest.status == Quest.QuestStatus.ONGOING and current_quest.end_location == location:
 			is_quest_completed = true
 			print("Quest Completed!")
 			current_quest = null

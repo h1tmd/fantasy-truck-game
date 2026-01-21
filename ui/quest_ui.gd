@@ -9,9 +9,12 @@ func _ready() -> void:
 	print("Player Obtained: " + player.to_string())
 
 func _process(_delta: float) -> void:
+	
 	if player.current_quest != null:
+		var player_status: String = Quest.QuestStatus.find_key(player.current_quest.status)
 		name_ui.text = player.current_quest.name
-		location.text = player.current_quest.location.name
-		status.text = "Ongoing"
-	else:
-		status.text = "Done!"
+		if player.current_quest.status == Quest.QuestStatus.READY:
+			location.text = player.current_quest.starting_location.name
+		else:
+			location.text = player.current_quest.end_location.name
+		status.text = player_status
