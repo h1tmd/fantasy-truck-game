@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://corigfvvvkltm"]
+[gd_scene load_steps=8 format=4 uid="uid://corigfvvvkltm"]
 
 [ext_resource type="TileSet" uid="uid://n1q1yw4t2q60" path="res://assets/tileset.tres" id="1_v6gxv"]
 [ext_resource type="PackedScene" uid="uid://j3igiyyubew2" path="res://objects/nature/big_tree.tscn" id="2_n8soh"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://csa6wbw37bdv4" path="res://actors/components/location_area.tscn" id="3_elhei"]
 [ext_resource type="Resource" uid="uid://cnxul67thwvdq" path="res://data/sample_location.tres" id="4_elhei"]
 [ext_resource type="PackedScene" uid="uid://1a63ja7as1i7" path="res://ui/quest_ui.tscn" id="6_mhx86"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://ui/addons/virtual_joystick/virtual_joystick_scene.tscn" id="7_glpkm"]
 
 [node name="Protype" type="Node2D"]
 
@@ -27,6 +28,32 @@ location_res = ExtResource("4_elhei")
 position = Vector2(616, 584)
 scale = Vector2(2, 2)
 
+[node name="CanvasLayer3" type="CanvasLayer" parent="Player"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Player/CanvasLayer3"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 89.0
+grow_horizontal = 2
+
+[node name="BoostLabel" type="ProgressBar" parent="Player/CanvasLayer3/VBoxContainer"]
+modulate = Color(0.49803922, 1, 1, 1)
+layout_mode = 2
+
+[node name="DurabilityBar" type="ProgressBar" parent="Player/CanvasLayer3/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="ShieldLabel" type="ProgressBar" parent="Player/CanvasLayer3/VBoxContainer"]
+layout_mode = 2
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Quest UI" parent="CanvasLayer" instance=ExtResource("6_mhx86")]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Virtual Joystick" parent="CanvasLayer2" instance=ExtResource("7_glpkm")]

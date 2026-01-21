@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccjw8kg8erc44"]
+
+[ext_resource type="Script" uid="uid://q3m2833jtxls" path="res://ui/virtual_joystick.gd" id="1_417qm"]
+
+[node name="VirtualJoystick" type="Control"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -300.0
+offset_right = 300.0
+grow_vertical = 0
+script = ExtResource("1_417qm")
+
+[node name="Base" type="TextureRect" parent="."]
+modulate = Color(1.0514921, 0.348174, 1.0514921, 1)
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Stick" type="TextureRect" parent="."]
+modulate = Color(0.12941177, 0.45490196, 1, 1)
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

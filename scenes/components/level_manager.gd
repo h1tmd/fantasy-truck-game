@@ -12,6 +12,8 @@ func _ready() -> void:
 	level_root = game
 	current_level = game.find_child("TileMapLayer", true, false)
 	assert(current_level)
+	
+	
 
 	
 #comment this out giving me headache
@@ -46,3 +48,9 @@ func change_level(next_level_path: String) -> void:
 	
 	current_level = next_level
 	set_process(true)
+
+
+
+	
+
+	
