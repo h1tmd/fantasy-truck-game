@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var durability_bar := $CanvasLayer3/VBoxContainer/DurabilityBar
 @onready var boost_bar := $CanvasLayer3/VBoxContainer/BoostLabel
 @onready var shield_bar := $CanvasLayer3/VBoxContainer/ShieldLabel
+@onready var load_sprite: Sprite2D = $"Truck Sprite/Load Sprite"
 
 
 # --- Movement ---
@@ -23,13 +24,20 @@ var stats := {
 }
 
 # --- Quest ---
-var current_quest: Quest
+signal quest_changed(quest)
+var current_quest: Quest = null:
+	get:
+		return current_quest
+	set(quest):
+		quest_changed.emit(quest)
+		current_quest = quest
 var is_quest_completed := false
 
 # -----------------------
 func _ready() -> void:
 	# Example quest load
 	current_quest = preload("uid://c1k3rjn6sjhj3")
+	current_quest.changed.connect(_on_current_quest_changed)
 	print("Current Quest: " + current_quest.name)
 
 	# Initialize UI max values
@@ -112,9 +120,24 @@ func generate_quest(_prev_loc: Location) -> void:
 
 func on_location_arrived(location: Location) -> void:
 	if current_quest != null:
-		if current_quest.location == location:
+		# Start quest upon arriving ang starting location
+		if current_quest.status == Quest.QuestStatus.READY and current_quest.starting_location == location:
+			current_quest.status = Quest.QuestStatus.ONGOING
+			if current_quest.type == Quest.QuestType.DELIVERY:
+				load_sprite.visible = true
+			else:
+				load_sprite.visible = false
+			print("Quest started")
+		# End the quest
+		elif current_quest.status == Quest.QuestStatus.ONGOING and current_quest.end_location == location:
 			is_quest_completed = true
+			current_quest.status = Quest.QuestStatus.FINISHED
+			load_sprite.visible = false
 			print("Quest Completed!")
 			current_quest = null
 			# Generate new quest
 			generate_quest(location)
+
+# Emit signal to update quest UI
+func _on_current_quest_changed():
+	quest_changed.emit(current_quest)
