@@ -6,12 +6,19 @@ extends Node
 @onready var status: Label = $PanelContainer/MarginContainer/VBoxContainer/Status
 
 func _ready() -> void:
-	print("Player Obtained: " + player.to_string())
+	if player:
+		player.quest_changed.connect(_on_quest_changed)
+		# Initial call setting UI
+		_on_quest_changed(player.current_quest)
 
-func _process(_delta: float) -> void:
-	if player.current_quest != null:
-		name_ui.text = player.current_quest.name
-		location.text = player.current_quest.location.name
-		status.text = "Ongoing"
-	else:
-		status.text = "Done!"
+func _on_quest_changed(quest: Quest):
+	if quest != null:
+		var quest_status: String = Quest.QuestStatus.find_key(quest.status)
+		name_ui.text = quest.name
+		if quest.status == Quest.QuestStatus.READY:
+			location.text = quest.starting_location.name
+		else:
+			location.text = quest.end_location.name
+		status.text = quest_status
+	#else:
+		#status.text = "No quest available"
