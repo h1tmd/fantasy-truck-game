@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Simple RPG"
+config/name="Isekai Truck"
 config/description="This is DevWorm's tutorial \"How to Create an RPG in Godot 4\" with steroids."
 run/main_scene="uid://corigfvvvkltm"
 config/features=PackedStringArray("4.5", "Forward Plus")
