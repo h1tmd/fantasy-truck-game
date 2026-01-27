@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=4 uid="uid://csqlopx17cjh5"]
+[gd_scene load_steps=6 format=4 uid="uid://csqlopx17cjh5"]
 
 [ext_resource type="TileSet" uid="uid://dmr2mla7hhak0" path="res://assets/main_map_tileset.tres" id="1_whrjg"]
 [ext_resource type="Texture2D" uid="uid://cy7kca7y8p7ff" path="res://assets/environment/castle.png" id="2_1xo34"]
+[ext_resource type="Texture2D" uid="uid://du5lgqihscnjr" path="res://assets/environment/port.png" id="3_eqscl"]
+[ext_resource type="Texture2D" uid="uid://0joyxk7g8p51" path="res://assets/environment/cave.png" id="4_uxg3y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uxg3y"]
+size = Vector2(4854, 1518)
 
 [node name="Main Map" type="Node2D"]
 
@@ -31,3 +36,25 @@ texture = ExtResource("2_1xo34")
 position = Vector2(-4.5324097, -8.994751)
 scale = Vector2(0.49639514, 0.50029004)
 polygon = PackedVector2Array(-1095, 1275, 78, 1261, 1274.252, 127.91528, 1278.281, -79.96411, 1264.1792, -1313.2488, -1284, -1276, -1292, 1275)
+
+[node name="Port" type="StaticBody2D" parent="."]
+position = Vector2(2437, 13073)
+
+[node name="Sprite2D" type="Sprite2D" parent="Port"]
+texture = ExtResource("3_eqscl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Port"]
+shape = SubResource("RectangleShape2D_uxg3y")
+
+[node name="Cave" type="StaticBody2D" parent="."]
+position = Vector2(16605, 998)
+
+[node name="Sprite2D" type="Sprite2D" parent="Cave"]
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("4_uxg3y")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cave"]
+polygon = PackedVector2Array(-783, 257, -507, 345, -254, 202, -61, 211, 274, 634, 375, 721, 403, 823, 463, 901, 729, 965, 1170, 979, 1322, 910, 1322, -997, -1270, -993, -1307, -648, -1284, -492, -1012, -312, -879, -257, -911, -133, -856, -28, -810, 18)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Cave"]
+polygon = PackedVector2Array(107, 680, -75, 878, -35, 925, 140, 994, 234, 951, 283, 866, 267, 770, 173, 678)
