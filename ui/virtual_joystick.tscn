@@ -1,6 +1,44 @@
 [gd_scene load_steps=2 format=3 uid="uid://ccjw8kg8erc44"]
 
-[ext_resource type="Script" uid="uid://q3m2833jtxls" path="res://ui/virtual_joystick.gd" id="1_417qm"]
+[sub_resource type="GDScript" id="GDScript_0p5ob"]
+script/source = "class_name VirtualJoystick
+extends Control
+
+@export var radius := 100.0
+var direction := Vector2.ZERO
+var touching := false
+
+@onready var base := $Base
+@onready var stick := $Stick
+
+func _ready():
+	stick.position = base.size / 2 - stick.size / 2
+
+func _gui_input(event):
+	if event is InputEventScreenTouch:
+		touching = event.pressed
+		if not touching:
+			reset_stick()
+
+	if event is InputEventScreenDrag and touching:
+		var center: Vector2 = base.global_position + Vector2(base.size) / 2
+		direction = (event.position - center).limit_length(radius) / radius
+		stick.global_position = center + direction * radius - stick.size / 2
+	
+	if event is InputEventMouseButton:
+		touching = event.pressed
+		if not touching:
+			reset_stick()
+
+	if event is InputEventMouseMotion and touching:
+		var center: Vector2 = base.global_position + Vector2(base.size) / 2
+		direction = (event.position - center).limit_length(radius) / radius
+		stick.global_position = center + direction * radius - stick.size / 2
+
+func reset_stick():
+	direction = Vector2.ZERO
+	stick.position = base.size / 2 - stick.size / 2
+"
 
 [node name="VirtualJoystick" type="Control"]
 custom_minimum_size = Vector2(300, 300)
@@ -11,7 +49,7 @@ anchor_bottom = 1.0
 offset_top = -300.0
 offset_right = 300.0
 grow_vertical = 0
-script = ExtResource("1_417qm")
+script = SubResource("GDScript_0p5ob")
 
 [node name="Base" type="TextureRect" parent="."]
 modulate = Color(1.0514921, 0.348174, 1.0514921, 1)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://corigfvvvkltm"]
+[gd_scene load_steps=11 format=4 uid="uid://corigfvvvkltm"]
 
 [ext_resource type="TileSet" uid="uid://n1q1yw4t2q60" path="res://assets/tileset.tres" id="1_v6gxv"]
 [ext_resource type="PackedScene" uid="uid://j3igiyyubew2" path="res://objects/nature/big_tree.tscn" id="2_n8soh"]
@@ -7,6 +7,15 @@
 [ext_resource type="Resource" uid="uid://cnxul67thwvdq" path="res://data/sample_location.tres" id="4_elhei"]
 [ext_resource type="PackedScene" uid="uid://1a63ja7as1i7" path="res://ui/quest_ui.tscn" id="6_mhx86"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://ui/addons/virtual_joystick/virtual_joystick_scene.tscn" id="7_glpkm"]
+[ext_resource type="Script" uid="uid://bvk41wm4a8q8" path="res://scenes/pause_menu.gd" id="8_owo4v"]
+[ext_resource type="Script" uid="uid://cs68ig6opox8r" path="res://scenes/button.gd" id="9_tkama"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tkama"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [node name="Protype" type="Node2D"]
 
@@ -57,3 +66,75 @@ layout_mode = 2
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
 [node name="Virtual Joystick" parent="CanvasLayer2" instance=ExtResource("7_glpkm")]
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" type="Control" parent="CanvasLayer3"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_left = 50.0
+offset_top = 274.0
+offset_right = 1184.0
+offset_bottom = 911.0
+script = ExtResource("8_owo4v")
+
+[node name="Panel" type="Panel" parent="CanvasLayer3/PauseMenu"]
+layout_mode = 0
+offset_left = -52.0
+offset_top = -270.0
+offset_right = 1098.0
+offset_bottom = 377.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer3/PauseMenu/Panel"]
+layout_mode = 0
+offset_left = 366.0
+offset_top = 181.0
+offset_right = 788.0
+offset_bottom = 488.0
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="CanvasLayer3/PauseMenu/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="resumeBtn" type="Button" parent="CanvasLayer3/PauseMenu/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_tkama")
+text = "Resume"
+
+[node name="optionsBtn" type="Button" parent="CanvasLayer3/PauseMenu/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_tkama")
+text = "Options"
+
+[node name="exitBtn" type="Button" parent="CanvasLayer3/PauseMenu/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_tkama")
+text = "Exit"
+
+[node name="PauseBtn" type="Button" parent="CanvasLayer3"]
+offset_left = 978.0
+offset_top = 18.0
+offset_right = 1067.0
+offset_bottom = 95.0
+theme_override_font_sizes/font_size = 50
+text = "II"
+script = ExtResource("9_tkama")
+
+[connection signal="pressed" from="CanvasLayer3/PauseMenu/Panel/VBoxContainer/resumeBtn" to="BigTree/Location Area" method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer3/PauseMenu/Panel/VBoxContainer/resumeBtn" to="CanvasLayer3/PauseMenu" method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer3/PauseMenu/Panel/VBoxContainer/optionsBtn" to="CanvasLayer3/PauseMenu" method="_on_options_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer3/PauseMenu/Panel/VBoxContainer/exitBtn" to="CanvasLayer3/PauseMenu" method="_on_exit_btn_pressed"]

@@ -8,10 +8,18 @@ var level_root : Node2D
 var current_level : Node2D
 
 
-func _ready() -> void:
-	level_root = game
-	current_level = game.find_child("TileMapLayer", true, false)
-	assert(current_level)
+
+func _ready():
+	if not game is Node2D:
+		push_error("LevelManager loaded outside gameplay scene")
+		return
+
+
+	
+#func _ready() -> void:
+	#level_root = game
+	#current_level = game.find_child("TileMapLayer", true, false)
+	#assert(current_level)
 	
 	
 

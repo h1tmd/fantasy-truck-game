@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Simple RPG"
 config/description="This is DevWorm's tutorial \"How to Create an RPG in Godot 4\" with steroids."
-run/main_scene="uid://corigfvvvkltm"
+run/main_scene="uid://dk6pqn108p3nd"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
