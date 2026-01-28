@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://csqlopx17cjh5"]
+[gd_scene load_steps=17 format=4 uid="uid://csqlopx17cjh5"]
 
 [ext_resource type="TileSet" uid="uid://dmr2mla7hhak0" path="res://assets/main_map_tileset.tres" id="1_whrjg"]
 [ext_resource type="Texture2D" uid="uid://cy7kca7y8p7ff" path="res://assets/environment/castle.png" id="2_1xo34"]
@@ -6,8 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://0joyxk7g8p51" path="res://assets/environment/cave.png" id="4_uxg3y"]
 [ext_resource type="Texture2D" uid="uid://8hiblgiulhgq" path="res://assets/environment/farm_field.png" id="5_kdyc3"]
 [ext_resource type="PackedScene" uid="uid://c4b4cojcqg8km" path="res://objects/houses/house_a.tscn" id="6_2xk3c"]
+[ext_resource type="Texture2D" uid="uid://b4qbv4jahdkqw" path="res://assets/environment/rock_brown_l.png" id="9_2xk3c"]
+[ext_resource type="Texture2D" uid="uid://cqkmcucykub55" path="res://assets/environment/rock_brown_s.png" id="10_6adrn"]
 [ext_resource type="PackedScene" uid="uid://cl66efd13mo0t" path="res://objects/houses/house_b.tscn" id="10_ulx81"]
 [ext_resource type="PackedScene" uid="uid://c0xk1qfjv58nd" path="res://objects/houses/house_c.tscn" id="11_6adrn"]
+[ext_resource type="PackedScene" uid="uid://bnrioadf2q3ir" path="res://objects/trees/large_tree.tscn" id="11_cyt25"]
+[ext_resource type="PackedScene" uid="uid://rtf41bs61h3m" path="res://objects/trees/spiky_tree.tscn" id="11_rk4p5"]
+[ext_resource type="Texture2D" uid="uid://rl32l611gjvv" path="res://assets/environment/rock_gray_l.png" id="11_sa572"]
+[ext_resource type="PackedScene" uid="uid://bkx6nael3jdoq" path="res://objects/trees/small_tree.tscn" id="12_cyt25"]
+[ext_resource type="Texture2D" uid="uid://bqonglg4gm8ik" path="res://assets/environment/rock_gray_s.png" id="12_rk4p5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uxg3y"]
 size = Vector2(4854, 1518)
@@ -95,194 +102,521 @@ position = Vector2(3962, -402)
 rotation = -3.1415927
 texture = ExtResource("5_kdyc3")
 
-[node name="Houscene" type="Node2D" parent="."]
+[node name="Houses" type="Node2D" parent="."]
 
-[node name="House A 1" parent="Houscene" instance=ExtResource("6_2xk3c")]
+[node name="House A 1" parent="Houses" instance=ExtResource("6_2xk3c")]
 position = Vector2(3595, 2631)
 
-[node name="House A 2" parent="Houscene" instance=ExtResource("6_2xk3c")]
+[node name="House A 2" parent="Houses" instance=ExtResource("6_2xk3c")]
 position = Vector2(4355, 2632)
 
-[node name="House A 3" parent="Houscene" instance=ExtResource("6_2xk3c")]
+[node name="House A 3" parent="Houses" instance=ExtResource("6_2xk3c")]
 position = Vector2(7469, 2559)
 
-[node name="House A 4" parent="Houscene" instance=ExtResource("6_2xk3c")]
+[node name="House A 4" parent="Houses" instance=ExtResource("6_2xk3c")]
 position = Vector2(8589, 2559)
 
-[node name="House A 5" parent="Houscene" instance=ExtResource("6_2xk3c")]
+[node name="House A 5" parent="Houses" instance=ExtResource("6_2xk3c")]
 position = Vector2(8703, 4148)
 
-[node name="House A 6" parent="Houscene" instance=ExtResource("6_2xk3c")]
+[node name="House A 6" parent="Houses" instance=ExtResource("6_2xk3c")]
 position = Vector2(10331, 4143)
 
-[node name="House A 7" parent="Houscene" instance=ExtResource("6_2xk3c")]
+[node name="House A 7" parent="Houses" instance=ExtResource("6_2xk3c")]
 position = Vector2(9187, 3378)
 
-[node name="House A 9" parent="Houscene" instance=ExtResource("6_2xk3c")]
+[node name="House A 9" parent="Houses" instance=ExtResource("6_2xk3c")]
 position = Vector2(6049, 467)
 
-[node name="House A 8" parent="Houscene" instance=ExtResource("6_2xk3c")]
+[node name="House A 8" parent="Houses" instance=ExtResource("6_2xk3c")]
 position = Vector2(4815, 6447)
 
-[node name="House A 17" parent="Houscene" instance=ExtResource("6_2xk3c")]
+[node name="House A 17" parent="Houses" instance=ExtResource("6_2xk3c")]
 position = Vector2(6805, 7317)
 
-[node name="House A 18" parent="Houscene" instance=ExtResource("6_2xk3c")]
+[node name="House A 18" parent="Houses" instance=ExtResource("6_2xk3c")]
 position = Vector2(6805, 7926)
 
-[node name="House A 19" parent="Houscene" instance=ExtResource("6_2xk3c")]
+[node name="House A 19" parent="Houses" instance=ExtResource("6_2xk3c")]
 position = Vector2(5359, 7986)
 
-[node name="House A 20" parent="Houscene" instance=ExtResource("6_2xk3c")]
+[node name="House A 20" parent="Houses" instance=ExtResource("6_2xk3c")]
 position = Vector2(4794, 7986)
 
-[node name="House A 21" parent="Houscene" instance=ExtResource("6_2xk3c")]
+[node name="House A 21" parent="Houses" instance=ExtResource("6_2xk3c")]
 position = Vector2(4234, 7986)
 
-[node name="House A 24" parent="Houscene" instance=ExtResource("6_2xk3c")]
+[node name="House A 24" parent="Houses" instance=ExtResource("6_2xk3c")]
 position = Vector2(9973, 7943)
 
-[node name="House A 25" parent="Houscene" instance=ExtResource("6_2xk3c")]
+[node name="House A 25" parent="Houses" instance=ExtResource("6_2xk3c")]
 position = Vector2(8745, 7943)
 
-[node name="House A 26" parent="Houscene" instance=ExtResource("6_2xk3c")]
+[node name="House A 26" parent="Houses" instance=ExtResource("6_2xk3c")]
 position = Vector2(8185, 7943)
 
-[node name="House A 13" parent="Houscene" instance=ExtResource("6_2xk3c")]
+[node name="House A 13" parent="Houses" instance=ExtResource("6_2xk3c")]
 position = Vector2(4225, 7363)
 
-[node name="House A 10" parent="Houscene" instance=ExtResource("6_2xk3c")]
+[node name="House A 10" parent="Houses" instance=ExtResource("6_2xk3c")]
 position = Vector2(10899, 3755)
 
-[node name="House A 11" parent="Houscene" instance=ExtResource("6_2xk3c")]
+[node name="House A 11" parent="Houses" instance=ExtResource("6_2xk3c")]
 position = Vector2(5933, 4643)
 
-[node name="House A 12" parent="Houscene" instance=ExtResource("6_2xk3c")]
+[node name="House A 12" parent="Houses" instance=ExtResource("6_2xk3c")]
 position = Vector2(4245, 4643)
 
-[node name="House B 1" parent="Houscene" instance=ExtResource("10_ulx81")]
+[node name="House B 1" parent="Houses" instance=ExtResource("10_ulx81")]
 position = Vector2(5221, 2625)
 
-[node name="House B 2" parent="Houscene" instance=ExtResource("10_ulx81")]
+[node name="House B 2" parent="Houses" instance=ExtResource("10_ulx81")]
 position = Vector2(4433, 3917)
 rotation = 1.5707964
 
-[node name="House B 3" parent="Houscene" instance=ExtResource("10_ulx81")]
+[node name="House B 3" parent="Houses" instance=ExtResource("10_ulx81")]
 position = Vector2(3808, 4038)
 
-[node name="House B 9" parent="Houscene" instance=ExtResource("10_ulx81")]
+[node name="House B 9" parent="Houses" instance=ExtResource("10_ulx81")]
 position = Vector2(5080, 4637)
 
-[node name="House B 4" parent="Houscene" instance=ExtResource("10_ulx81")]
+[node name="House B 4" parent="Houses" instance=ExtResource("10_ulx81")]
 position = Vector2(6808, 2544)
 
-[node name="House B 5" parent="Houscene" instance=ExtResource("10_ulx81")]
+[node name="House B 5" parent="Houses" instance=ExtResource("10_ulx81")]
 position = Vector2(9183, 2691)
 rotation = 1.5707964
 
-[node name="House A 22" parent="Houscene" instance=ExtResource("6_2xk3c")]
+[node name="House A 22" parent="Houses" instance=ExtResource("6_2xk3c")]
 position = Vector2(10738, 1609)
 
-[node name="House A 23" parent="Houscene" instance=ExtResource("6_2xk3c")]
+[node name="House A 23" parent="Houses" instance=ExtResource("6_2xk3c")]
 position = Vector2(12749, 2631)
 
-[node name="House B 16" parent="Houscene" instance=ExtResource("10_ulx81")]
+[node name="House B 16" parent="Houses" instance=ExtResource("10_ulx81")]
 position = Vector2(10773, 2500)
 rotation = 1.5707964
 
-[node name="House B 6" parent="Houscene" instance=ExtResource("10_ulx81")]
+[node name="House B 6" parent="Houses" instance=ExtResource("10_ulx81")]
 position = Vector2(9399, 4139)
 
-[node name="House B 7" parent="Houscene" instance=ExtResource("10_ulx81")]
+[node name="House B 7" parent="Houses" instance=ExtResource("10_ulx81")]
 position = Vector2(8025, 2666)
 rotation = -1.5707964
 
-[node name="House B 8" parent="Houscene" instance=ExtResource("10_ulx81")]
+[node name="House B 8" parent="Houses" instance=ExtResource("10_ulx81")]
 position = Vector2(11659, 3946)
 rotation = -1.5707964
 
-[node name="House B 10" parent="Houscene" instance=ExtResource("10_ulx81")]
+[node name="House B 10" parent="Houses" instance=ExtResource("10_ulx81")]
 position = Vector2(5877, 5965)
 rotation = -1.5707964
 
-[node name="House B 15" parent="Houscene" instance=ExtResource("10_ulx81")]
+[node name="House B 15" parent="Houses" instance=ExtResource("10_ulx81")]
 position = Vector2(3641, 6329)
 rotation = -1.5707964
 
-[node name="House B 11" parent="Houscene" instance=ExtResource("10_ulx81")]
+[node name="House B 11" parent="Houses" instance=ExtResource("10_ulx81")]
 position = Vector2(4936, 5869)
 rotation = -3.1415927
 
-[node name="House C 1" parent="Houscene" instance=ExtResource("11_6adrn")]
+[node name="House C 1" parent="Houses" instance=ExtResource("11_6adrn")]
 position = Vector2(5195, 3852)
 rotation = 3.1415927
 
-[node name="House C 2" parent="Houscene" instance=ExtResource("11_6adrn")]
+[node name="House C 2" parent="Houses" instance=ExtResource("11_6adrn")]
 position = Vector2(6030, 3932)
 rotation = 4.712389
 
-[node name="House C 3" parent="Houscene" instance=ExtResource("11_6adrn")]
+[node name="House C 3" parent="Houses" instance=ExtResource("11_6adrn")]
 position = Vector2(7807, 3504)
 rotation = 6.2831855
 
-[node name="House C 11" parent="Houscene" instance=ExtResource("11_6adrn")]
+[node name="House C 11" parent="Houses" instance=ExtResource("11_6adrn")]
 position = Vector2(11720, 2580)
 rotation = 6.2831855
 
-[node name="House A 14" parent="Houscene" instance=ExtResource("6_2xk3c")]
+[node name="House A 14" parent="Houses" instance=ExtResource("6_2xk3c")]
 position = Vector2(9689, 5505)
 
-[node name="House A 15" parent="Houscene" instance=ExtResource("6_2xk3c")]
+[node name="House A 15" parent="Houses" instance=ExtResource("6_2xk3c")]
 position = Vector2(8958, 6704)
 
-[node name="House A 16" parent="Houscene" instance=ExtResource("6_2xk3c")]
+[node name="House A 16" parent="Houses" instance=ExtResource("6_2xk3c")]
 position = Vector2(10671, 6704)
 
-[node name="House B 12" parent="Houscene" instance=ExtResource("10_ulx81")]
+[node name="House B 12" parent="Houses" instance=ExtResource("10_ulx81")]
 position = Vector2(8908, 5505)
 
-[node name="House B 13" parent="Houscene" instance=ExtResource("10_ulx81")]
+[node name="House B 13" parent="Houses" instance=ExtResource("10_ulx81")]
 position = Vector2(9523, 6509)
 rotation = -1.5707964
 scale = Vector2(1.2, 1.2)
 
-[node name="House B 14" parent="Houscene" instance=ExtResource("10_ulx81")]
+[node name="House B 14" parent="Houses" instance=ExtResource("10_ulx81")]
 position = Vector2(10117, 6509)
 rotation = -1.5707964
 scale = Vector2(1.2, 1.2)
 
-[node name="House C 8" parent="Houscene" instance=ExtResource("11_6adrn")]
+[node name="House C 8" parent="Houses" instance=ExtResource("11_6adrn")]
 position = Vector2(10488, 5438)
 rotation = 3.1415927
 
-[node name="House C 4" parent="Houscene" instance=ExtResource("11_6adrn")]
+[node name="House C 4" parent="Houses" instance=ExtResource("11_6adrn")]
 position = Vector2(12382, 4049)
 rotation = 6.2831855
 scale = Vector2(1, -1)
 
-[node name="House C 5" parent="Houscene" instance=ExtResource("11_6adrn")]
+[node name="House C 5" parent="Houses" instance=ExtResource("11_6adrn")]
 position = Vector2(8246, 6479)
 rotation = 4.712389
 scale = Vector2(1, -1)
 
-[node name="House C 6" parent="Houscene" instance=ExtResource("11_6adrn")]
+[node name="House C 6" parent="Houses" instance=ExtResource("11_6adrn")]
 position = Vector2(6848, 6508)
 rotation = 7.853982
 scale = Vector2(1, -1)
 
-[node name="House C 9" parent="Houscene" instance=ExtResource("11_6adrn")]
+[node name="House C 9" parent="Houses" instance=ExtResource("11_6adrn")]
 position = Vector2(6078, 7927)
 rotation = 9.424778
 scale = Vector2(1, -1)
 
-[node name="House C 7" parent="Houscene" instance=ExtResource("11_6adrn")]
+[node name="House C 7" parent="Houses" instance=ExtResource("11_6adrn")]
 position = Vector2(3516, 5491)
 rotation = 4.712389
 
-[node name="House C 10" parent="Houscene" instance=ExtResource("11_6adrn")]
+[node name="House C 10" parent="Houses" instance=ExtResource("11_6adrn")]
 position = Vector2(2313, 8540)
 rotation = 4.712389
 
-[node name="House C 12" parent="Houscene" instance=ExtResource("11_6adrn")]
+[node name="House C 12" parent="Houses" instance=ExtResource("11_6adrn")]
 position = Vector2(1641, 11938)
 rotation = 3.1415927
+
+[node name="Small Tree" parent="Houses" instance=ExtResource("12_cyt25")]
+position = Vector2(4899, 7376)
+
+[node name="Small Tree2" parent="Houses" instance=ExtResource("12_cyt25")]
+position = Vector2(5337, 7001)
+rotation = 1.0471976
+
+[node name="Small Tree3" parent="Houses" instance=ExtResource("12_cyt25")]
+position = Vector2(8837, 6097)
+rotation = 2.3561945
+
+[node name="Small Tree5" parent="Houses" instance=ExtResource("12_cyt25")]
+position = Vector2(9624, 2712)
+rotation = 1.8325958
+
+[node name="Small Tree6" parent="Houses" instance=ExtResource("12_cyt25")]
+position = Vector2(2285.0002, 4784)
+rotation = 1.8325958
+scale = Vector2(1.3552895, 1.3552895)
+
+[node name="Small Tree4" parent="Houses" instance=ExtResource("12_cyt25")]
+position = Vector2(6267, 6215)
+rotation = -1.0471976
+scale = Vector2(0.7815901, 0.7815901)
+
+[node name="Large Tree" parent="Houses" instance=ExtResource("11_cyt25")]
+position = Vector2(3158, 7423)
+
+[node name="Spiky Tree" parent="Houses" instance=ExtResource("11_rk4p5")]
+position = Vector2(10633, 7869)
+
+[node name="Rocks" type="Node2D" parent="."]
+position = Vector2(15106, 1958)
+
+[node name="Large Rock 1" type="StaticBody2D" parent="Rocks"]
+position = Vector2(-3147, -814)
+
+[node name="Sprite2D" type="Sprite2D" parent="Rocks/Large Rock 1"]
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("9_2xk3c")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rocks/Large Rock 1"]
+polygon = PackedVector2Array(-405, 146, -375, 218, -307, 283, -211, 407, -11, 449, 114, 420, 302, 319, 407, 203, 398, -94, 340, -249, 202, -449, 91, -439, -265, -379, -349, -321, -402, -209, -399, -23, -418, 38)
+
+[node name="Large Rock 2" type="StaticBody2D" parent="Rocks"]
+position = Vector2(-461, 1468)
+rotation = 2.8797934
+
+[node name="Sprite2D" type="Sprite2D" parent="Rocks/Large Rock 2"]
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("9_2xk3c")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rocks/Large Rock 2"]
+polygon = PackedVector2Array(-405, 146, -375, 218, -307, 283, -211, 407, -11, 449, 114, 420, 302, 319, 407, 203, 398, -94, 340, -249, 202, -449, 91, -439, -265, -379, -349, -321, -402, -209, -399, -23, -418, 38)
+
+[node name="Small Rock 1" type="StaticBody2D" parent="Rocks"]
+position = Vector2(-2022, -1288)
+rotation = 2.8797934
+
+[node name="Sprite2D" type="Sprite2D" parent="Rocks/Small Rock 1"]
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("10_6adrn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rocks/Small Rock 1"]
+polygon = PackedVector2Array(138.19238, 90.86279, -24.800781, 162.10449, -87.93164, 165.89355, -138.43262, 110.95117, -155.85938, -21.057617, -133.99902, -94.916016, 2.9638672, -161.74463, 152.40039, -47.163086)
+
+[node name="Small Rock 4" type="StaticBody2D" parent="Rocks"]
+position = Vector2(-1479, 266)
+rotation = 1.5707964
+
+[node name="Sprite2D" type="Sprite2D" parent="Rocks/Small Rock 4"]
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("10_6adrn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rocks/Small Rock 4"]
+polygon = PackedVector2Array(138.19238, 90.86279, -24.800781, 162.10449, -87.93164, 165.89355, -138.43262, 110.95117, -155.85938, -21.057617, -133.99902, -94.916016, 2.9638672, -161.74463, 152.40039, -47.163086)
+
+[node name="Small Rock 5" type="StaticBody2D" parent="Rocks"]
+position = Vector2(-2213, -178.00003)
+rotation = -0.2617994
+
+[node name="Sprite2D" type="Sprite2D" parent="Rocks/Small Rock 5"]
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("10_6adrn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rocks/Small Rock 5"]
+polygon = PackedVector2Array(138.19238, 90.86279, -24.800781, 162.10449, -87.93164, 165.89355, -138.43262, 110.95117, -155.85938, -21.057617, -133.99902, -94.916016, 2.9638672, -161.74463, 152.40039, -47.163086)
+
+[node name="Small Rock 6" type="StaticBody2D" parent="Rocks"]
+position = Vector2(-180.99976, 26.999939)
+rotation = -2.0943952
+
+[node name="Sprite2D" type="Sprite2D" parent="Rocks/Small Rock 6"]
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("10_6adrn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rocks/Small Rock 6"]
+polygon = PackedVector2Array(138.19238, 90.86279, -24.800781, 162.10449, -87.93164, 165.89355, -138.43262, 110.95117, -155.85938, -21.057617, -133.99902, -94.916016, 2.9638672, -161.74463, 152.40039, -47.163086)
+
+[node name="Small Rock 2" type="StaticBody2D" parent="Rocks"]
+position = Vector2(915, 1119)
+
+[node name="Sprite2D" type="Sprite2D" parent="Rocks/Small Rock 2"]
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("10_6adrn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rocks/Small Rock 2"]
+polygon = PackedVector2Array(138.19238, 90.86279, -24.800781, 162.10449, -87.93164, 165.89355, -138.43262, 110.95117, -155.85938, -21.057617, -133.99902, -94.916016, 2.9638672, -161.74463, 152.40039, -47.163086)
+
+[node name="Small Rock 3" type="StaticBody2D" parent="Rocks"]
+position = Vector2(-623.00006, -1217.9999)
+rotation = -0.7853982
+scale = Vector2(1.3, 1.3)
+
+[node name="Sprite2D" type="Sprite2D" parent="Rocks/Small Rock 3"]
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("10_6adrn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rocks/Small Rock 3"]
+polygon = PackedVector2Array(138.19238, 90.86279, -24.800781, 162.10449, -87.93164, 165.89355, -138.43262, 110.95117, -155.85938, -21.057617, -133.99902, -94.916016, 2.9638672, -161.74463, 152.40039, -47.163086)
+
+[node name="Small Rock 7" type="StaticBody2D" parent="Rocks"]
+position = Vector2(68, 403.00024)
+rotation = -1.8325958
+scale = Vector2(1.3, 1.3)
+
+[node name="Sprite2D" type="Sprite2D" parent="Rocks/Small Rock 7"]
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("10_6adrn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rocks/Small Rock 7"]
+polygon = PackedVector2Array(138.19238, 90.86279, -24.800781, 162.10449, -87.93164, 165.89355, -138.43262, 110.95117, -155.85938, -21.057617, -133.99902, -94.916016, 2.9638672, -161.74463, 152.40039, -47.163086)
+
+[node name="Ice" type="Node2D" parent="."]
+position = Vector2(3574, 11841.999)
+rotation = 2.6712086
+
+[node name="Large Rock 1" type="StaticBody2D" parent="Ice"]
+position = Vector2(-3105.3489, -291.04333)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ice/Large Rock 1"]
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("11_sa572")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ice/Large Rock 1"]
+polygon = PackedVector2Array(-405, 146, -375, 218, -307, 283, -211, 407, -11, 449, 114, 420, 302, 319, 407, 203, 398, -94, 340, -249, 202, -449, 91, -439, -265, -379, -349, -321, -402, -209, -399, -23, -418, 38)
+
+[node name="Large Rock 2" type="StaticBody2D" parent="Ice"]
+position = Vector2(-1412.2351, -479.0995)
+scale = Vector2(0.7456699, 0.7456699)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ice/Large Rock 2"]
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("11_sa572")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ice/Large Rock 2"]
+polygon = PackedVector2Array(-405, 146, -375, 218, -307, 283, -211, 407, -11, 449, 114, 420, 302, 319, 407, 203, 398, -94, 340, -249, 202, -449, 91, -439, -265, -379, -349, -321, -402, -209, -399, -23, -418, 38)
+
+[node name="Small Rock 1" type="StaticBody2D" parent="Ice"]
+position = Vector2(1247.9758, 299.1012)
+rotation = 2.8797934
+
+[node name="Sprite2D" type="Sprite2D" parent="Ice/Small Rock 1"]
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("12_rk4p5")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ice/Small Rock 1"]
+polygon = PackedVector2Array(138.19238, 90.86279, -24.800781, 162.10449, -87.93164, 165.89355, -138.43262, 110.95117, -155.85938, -21.057617, -133.99902, -94.916016, 2.9638672, -161.74463, 152.40039, -47.163086)
+
+[node name="Small Rock 2" type="StaticBody2D" parent="Ice"]
+position = Vector2(2949.7876, 1342.7578)
+rotation = 1.3089969
+
+[node name="Sprite2D" type="Sprite2D" parent="Ice/Small Rock 2"]
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("12_rk4p5")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ice/Small Rock 2"]
+polygon = PackedVector2Array(138.19238, 90.86279, -24.800781, 162.10449, -87.93164, 165.89355, -138.43262, 110.95117, -155.85938, -21.057617, -133.99902, -94.916016, 2.9638672, -161.74463, 152.40039, -47.163086)
+
+[node name="Forest" type="Node2D" parent="."]
+position = Vector2(13778, 11972)
+
+[node name="Small Tree" parent="Forest" instance=ExtResource("12_cyt25")]
+position = Vector2(-79, -1602)
+
+[node name="Small Tree2" parent="Forest" instance=ExtResource("12_cyt25")]
+position = Vector2(-2077, -1609)
+
+[node name="Small Tree7" parent="Forest" instance=ExtResource("12_cyt25")]
+position = Vector2(-2229, 628)
+rotation = -0.5235988
+scale = Vector2(1.2300982, 1.2300982)
+
+[node name="Small Tree3" parent="Forest" instance=ExtResource("12_cyt25")]
+position = Vector2(-2453, -1765)
+rotation = -1.5707964
+scale = Vector2(1.2690573, 1.2690573)
+
+[node name="Small Tree4" parent="Forest" instance=ExtResource("12_cyt25")]
+position = Vector2(-4144, -1087)
+rotation = -2.8797934
+scale = Vector2(1.2690573, 1.2690573)
+
+[node name="Small Tree10" parent="Forest" instance=ExtResource("12_cyt25")]
+position = Vector2(-421, 147)
+rotation = 3.1415925
+scale = Vector2(1.8033718, 1.8033718)
+
+[node name="Small Tree5" parent="Forest" instance=ExtResource("12_cyt25")]
+position = Vector2(-3782, -564)
+rotation = -2.3561945
+scale = Vector2(1.4660388, 1.4660388)
+
+[node name="Small Tree9" parent="Forest" instance=ExtResource("12_cyt25")]
+position = Vector2(-1407, -60.00003)
+rotation = 0.5235988
+scale = Vector2(1.2300982, 1.2300982)
+
+[node name="Small Tree11" parent="Forest" instance=ExtResource("12_cyt25")]
+position = Vector2(1713, -1935)
+rotation = 1.5707964
+
+[node name="Small Tree12" parent="Forest" instance=ExtResource("12_cyt25")]
+position = Vector2(3959, -1541)
+rotation = 1.5707964
+
+[node name="Spiky Tree" parent="Forest" instance=ExtResource("11_rk4p5")]
+position = Vector2(-913, -472)
+rotation = 0.7853982
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Spiky Tree2" parent="Forest" instance=ExtResource("11_rk4p5")]
+position = Vector2(-1980, -2206)
+rotation = -0.2617994
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Spiky Tree3" parent="Forest" instance=ExtResource("11_rk4p5")]
+position = Vector2(-1980, -2206)
+rotation = -0.2617994
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Spiky Tree4" parent="Forest" instance=ExtResource("11_rk4p5")]
+position = Vector2(472, 1635)
+rotation = -0.2617994
+scale = Vector2(1.093508, 1.093508)
+
+[node name="Spiky Tree5" parent="Forest" instance=ExtResource("11_rk4p5")]
+position = Vector2(1125.9995, -790.99976)
+rotation = -0.2617994
+
+[node name="Large Tree 1" parent="Forest" instance=ExtResource("11_cyt25")]
+position = Vector2(-3802, -2058)
+rotation = -1.3089969
+
+[node name="Large Tree 2" parent="Forest" instance=ExtResource("11_cyt25")]
+position = Vector2(-1399, -1663)
+rotation = -0.5235988
+
+[node name="Small Tree13" parent="Forest" instance=ExtResource("12_cyt25")]
+position = Vector2(1699, -7)
+rotation = -1.3089969
+
+[node name="Small Tree14" parent="Forest" instance=ExtResource("12_cyt25")]
+position = Vector2(2686.9998, -20.000122)
+rotation = -2.8797934
+scale = Vector2(1.2690573, 1.2690573)
+
+[node name="Large Tree 14" parent="Forest" instance=ExtResource("11_cyt25")]
+position = Vector2(2250, -410)
+rotation = -1.8325958
+
+[node name="Large Tree 3" parent="Forest" instance=ExtResource("11_cyt25")]
+position = Vector2(-4092, 108)
+rotation = 2.6179938
+
+[node name="Large Tree 4" parent="Forest" instance=ExtResource("11_cyt25")]
+position = Vector2(-3258, 1829)
+rotation = -1.8325958
+
+[node name="Large Tree 8" parent="Forest" instance=ExtResource("11_cyt25")]
+position = Vector2(-1054, 503.99997)
+rotation = 1.0471976
+scale = Vector2(1.2300982, 1.2300982)
+
+[node name="Large Tree 11" parent="Forest" instance=ExtResource("11_cyt25")]
+position = Vector2(321.99988, -5)
+scale = Vector2(1.2300982, 1.2300982)
+
+[node name="Large Tree 6" parent="Forest" instance=ExtResource("11_cyt25")]
+position = Vector2(1152, -1883)
+
+[node name="Large Tree 5" parent="Forest" instance=ExtResource("11_cyt25")]
+position = Vector2(549, -1677)
+rotation = 1.8325958
+
+[node name="Large Tree 12" parent="Forest" instance=ExtResource("11_cyt25")]
+position = Vector2(3182, -1820)
+rotation = 1.5707964
+scale = Vector2(1.3498603, 1.3498603)
+
+[node name="Large Tree 13" parent="Forest" instance=ExtResource("11_cyt25")]
+position = Vector2(2341, -2010)
+rotation = 3.403392
+
+[node name="Large Tree 7" parent="Forest" instance=ExtResource("11_cyt25")]
+position = Vector2(4039, -2375)
+
+[node name="Large Tree 9" parent="Forest" instance=ExtResource("11_cyt25")]
+position = Vector2(3990, 218)
+rotation = 1.8325958
+
+[node name="Large Tree 10" parent="Forest" instance=ExtResource("11_cyt25")]
+position = Vector2(1341, 1503)
+rotation = 0.7853982
+scale = Vector2(1.5453651, 1.5453651)
+
+[node name="Small Tree6" parent="Forest" instance=ExtResource("12_cyt25")]
+position = Vector2(-1629, 774)
+rotation = 2.6179938
+scale = Vector2(1.8033718, 1.8033718)
+
+[node name="Small Tree8" parent="Forest" instance=ExtResource("12_cyt25")]
+position = Vector2(-1960, -59)
+rotation = -3.6651917
+scale = Vector2(1.8033718, 1.8033718)
