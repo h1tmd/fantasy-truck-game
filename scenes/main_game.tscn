@@ -38,7 +38,7 @@ scale = Vector2(0.4, 0.4)
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_ygxny")]
-position = Vector2(5921, 3054.0005)
+position = Vector2(2901, 2273)
 scale = Vector2(1.6, 1.6)
 max_speed = 500.0
 turn_speed = 2.5
