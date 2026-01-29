@@ -8,7 +8,9 @@ extends CharacterBody2D
 @onready var shield_bar := $CanvasLayer3/VBoxContainer/ShieldLabel
 @onready var load_sprite: Sprite2D = $"Truck Sprite/Load Sprite"
 @onready var gas_bar := $CanvasLayer3/VBoxContainer/Gas
-
+@onready var engine := $engine
+@onready var accel := $forward
+@onready var reverse := $reverse
 
 # --- Movement ---
 @export var max_speed: float = 200.0       # forward speed
@@ -57,16 +59,28 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	var throttle := Input.get_action_strength("ui_up") - Input.get_action_strength("ui_down")
 	var steering := Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	if throttle > 0:
+		if not engine.playing: engine.play()
+		accel.stop()
+		reverse.stop()
+	elif throttle < 0: 
+		if not reverse.playing: reverse.play()
+		engine.stop()
+		accel.stop()
+	else:
+		if not accel.playing: accel.play()
+		engine.stop()
+		reverse.stop()
 	
-	
+		
+		
+		
 	var gas_reduction := (Input.get_action_strength("ui_up")  + Input.get_action_strength("ui_down"))
 	reduce_gas += gas_reduction
-	#print(reduce_gas)
+	
+	print(throttle)
 	#var reduce :=  100 - throttle
-	#print(gas_reduction)
-
-	
-	
+	#print(gas_reduction)S
 	# Rotate only if moving
 	if velocity.length() > 5:
 		rotation += steering * turn_speed * delta

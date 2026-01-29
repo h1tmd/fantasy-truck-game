@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://corigfvvvkltm"]
+[gd_scene load_steps=9 format=4 uid="uid://corigfvvvkltm"]
 
 [ext_resource type="TileSet" uid="uid://n1q1yw4t2q60" path="res://assets/tileset.tres" id="1_v6gxv"]
 [ext_resource type="PackedScene" uid="uid://j3igiyyubew2" path="res://objects/nature/big_tree.tscn" id="2_n8soh"]
@@ -6,10 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://csa6wbw37bdv4" path="res://actors/components/location_area.tscn" id="3_elhei"]
 [ext_resource type="Resource" uid="uid://cnxul67thwvdq" path="res://data/sample_location.tres" id="4_elhei"]
 [ext_resource type="PackedScene" uid="uid://1a63ja7as1i7" path="res://ui/quest_ui.tscn" id="6_mhx86"]
-[ext_resource type="AudioStream" uid="uid://1vwgi5s4k7bu" path="res://assets/sfx/car-engine-noise-321224.mp3" id="6_owo4v"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://ui/addons/virtual_joystick/virtual_joystick_scene.tscn" id="7_glpkm"]
-[ext_resource type="AudioStream" uid="uid://dxhsolh0jn7mx" path="res://assets/sfx/a-truck-starting-from-rest-442342.mp3" id="7_tkama"]
-[ext_resource type="AudioStream" uid="uid://c4hopkk5ootqk" path="res://assets/sfx/truck-reverse-beeper-88017.mp3" id="8_ktl0f"]
 
 [sub_resource type="GDScript" id="GDScript_glpkm"]
 script/source = "extends ProgressBar
@@ -65,18 +62,6 @@ modulate = Color(1, 0.18039216, 0, 1)
 layout_mode = 2
 script = SubResource("GDScript_glpkm")
 
-[node name="engine" type="AudioStreamPlayer2D" parent="Player"]
-stream = ExtResource("6_owo4v")
-autoplay = true
-
-[node name="forward" type="AudioStreamPlayer2D" parent="Player"]
-stream = ExtResource("7_tkama")
-autoplay = true
-
-[node name="reverse" type="AudioStreamPlayer2D" parent="Player"]
-stream = ExtResource("8_ktl0f")
-autoplay = true
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Quest UI" parent="CanvasLayer" instance=ExtResource("6_mhx86")]
@@ -84,3 +69,13 @@ autoplay = true
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
 [node name="Virtual Joystick" parent="CanvasLayer2" instance=ExtResource("7_glpkm")]
+pressed_color = null
+deadzone_size = null
+clampzone_size = null
+joystick_mode = null
+visibility_mode = null
+use_input_actions = null
+action_left = null
+action_right = null
+action_up = null
+action_down = null
