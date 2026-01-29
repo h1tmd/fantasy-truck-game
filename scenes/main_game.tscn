@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://bdkumy0hsg5qy" path="res://scenes/main_map.tscn" id="1_ipu61"]
 [ext_resource type="PackedScene" uid="uid://cadl6hjl3d2cy" path="res://actors/player/player.tscn" id="2_ygxny"]
-[ext_resource type="Script" uid="uid://0q5hmmmglakc" path="res://scenes/control.gd" id="3_vnsdt"]
+[ext_resource type="Script" path="res://scenes/control.gd" id="3_vnsdt"]
 [ext_resource type="Script" uid="uid://bvk41wm4a8q8" path="res://scenes/pause_menu.gd" id="4_70vka"]
 [ext_resource type="Texture2D" uid="uid://hxku00xy0ago" path="res://ui/addons/arrow_left.png" id="4_ibnub"]
-[ext_resource type="Script" uid="uid://dlj2erl5at31j" path="res://ui/control_button.gd" id="4_ikqpi"]
+[ext_resource type="Script" path="res://ui/control_button.gd" id="4_ikqpi"]
 [ext_resource type="Script" uid="uid://cs68ig6opox8r" path="res://scenes/button.gd" id="5_2l77h"]
 [ext_resource type="Texture2D" uid="uid://baoonk83ongqv" path="res://ui/addons/arrow_right.png" id="6_5wboo"]
 [ext_resource type="PackedScene" uid="uid://csa6wbw37bdv4" path="res://actors/components/location_area.tscn" id="6_ygxny"]
@@ -85,9 +85,7 @@ metadata/_edit_lock_ = true
 [node name="Player" parent="." instance=ExtResource("2_ygxny")]
 position = Vector2(2901, 2273)
 scale = Vector2(1.6, 1.6)
-max_speed = 500.0
-turn_speed = 2.5
-reverse_speed = 300.0
+max_speed = 250.0
 
 [node name="CanvasLayer3" type="CanvasLayer" parent="Player"]
 
