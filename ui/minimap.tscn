@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://bo546vy8e6q7f"]
+
+[ext_resource type="Texture2D" uid="uid://cnjyakoisc3nc" path="res://assets/environment/map_thumbnail.png" id="1_7p2yb"]
+[ext_resource type="Script" uid="uid://cdqvmg7l46cx7" path="res://ui/minimap.gd" id="1_auusx"]
+
+[sub_resource type="Gradient" id="Gradient_ki044"]
+offsets = PackedFloat32Array(0.8267327, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ki044"]
+gradient = SubResource("Gradient_ki044")
+width = 20
+height = 20
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_c3in5"]
+offsets = PackedFloat32Array(0.9405941, 1)
+colors = PackedColorArray(0.3019608, 0.72156864, 0.40784314, 1, 0.3019608, 0.72156864, 0.40784314, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2tcx1"]
+gradient = SubResource("Gradient_c3in5")
+width = 20
+height = 20
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_auusx"]
+offsets = PackedFloat32Array(0.8267327, 1)
+colors = PackedColorArray(0.2611599, 0.62171775, 0.9626087, 1, 0.3019608, 0.5176471, 0.72156864, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sis52"]
+gradient = SubResource("Gradient_auusx")
+width = 20
+height = 20
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="Minimap" type="Node2D" groups=["minimap"]]
+script = ExtResource("1_auusx")
+
+[node name="MinimapSprite" type="Sprite2D" parent="."]
+self_modulate = Color(0.8191304, 0.8191304, 0.8191304, 1)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_7p2yb")
+centered = false
+
+[node name="Marker" type="Sprite2D" parent="."]
+position = Vector2(84, 55)
+texture = SubResource("GradientTexture2D_ki044")
+
+[node name="Start Marker" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(39, 73)
+texture = SubResource("GradientTexture2D_2tcx1")
+
+[node name="End Marker" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(131, 85)
+texture = SubResource("GradientTexture2D_sis52")
