@@ -79,7 +79,7 @@ func _physics_process(delta: float) -> void:
 	
 		
 	var gas_reduction := (Input.get_action_strength("car_forward") + Input.get_action_strength("car_reverse"))
-	reduce_gas += gas_reduction
+	reduce_gas += gas_reduction * 0.5
 	
 	#print(throttle)
 	#var reduce :=  100 - throttle
@@ -191,7 +191,7 @@ func increase_max_speed(amount: float):
 	reverse_speed += amount
 
 func recover_gas(percentage: float):
-	reduce_gas -= stats["gas"] * percentage
+	reduce_gas = max(reduce_gas - stats["gas"] * percentage, 0)
 
 func increase_gas_capacity(amount: float):
 	stats["gas"] += amount
