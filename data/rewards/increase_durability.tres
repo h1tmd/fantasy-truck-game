@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PlayerReward" load_steps=2 format=3 uid="uid://bs40mdrjep8cw"]
+
+[ext_resource type="Script" uid="uid://cysyo6xp5wh1r" path="res://systems/player_reward.gd" id="1_hsv2d"]
+
+[resource]
+script = ExtResource("1_hsv2d")
+reward_description = "Permanently increase durability."
+player_method_name = "increase_durability"
+method_args = [50.0]
+metadata/_custom_type_script = "uid://cysyo6xp5wh1r"

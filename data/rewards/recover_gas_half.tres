@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PlayerReward" load_steps=2 format=3 uid="uid://dldxmojj2iai7"]
+
+[ext_resource type="Script" uid="uid://cysyo6xp5wh1r" path="res://systems/player_reward.gd" id="1_ll2jr"]
+
+[resource]
+script = ExtResource("1_ll2jr")
+reward_description = "Recover gas by 50%"
+player_method_name = "recover_gas"
+method_args = [0.5]
+metadata/_custom_type_script = "uid://cysyo6xp5wh1r"

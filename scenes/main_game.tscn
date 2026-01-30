@@ -1,6 +1,7 @@
-[gd_scene load_steps=47 format=3 uid="uid://0a4sac7166s3"]
+[gd_scene load_steps=48 format=3 uid="uid://0a4sac7166s3"]
 
 [ext_resource type="PackedScene" uid="uid://bdkumy0hsg5qy" path="res://scenes/main_map.tscn" id="1_ipu61"]
+[ext_resource type="PackedScene" uid="uid://dnm5d1b7wdkm1" path="res://ui/quest_reward_popup.tscn" id="2_dcudo"]
 [ext_resource type="PackedScene" uid="uid://cadl6hjl3d2cy" path="res://actors/player/player.tscn" id="2_ygxny"]
 [ext_resource type="Script" uid="uid://0q5hmmmglakc" path="res://scenes/control.gd" id="3_vnsdt"]
 [ext_resource type="Script" uid="uid://bvk41wm4a8q8" path="res://scenes/pause_menu.gd" id="4_70vka"]
@@ -247,6 +248,8 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_rr87q")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_dp0eu")
 icon = ExtResource("8_cybgu")
 script = ExtResource("4_ikqpi")
+
+[node name="Quest Reward Popup" parent="Player/CanvasLayer2" instance=ExtResource("2_dcudo")]
 
 [node name="CanvasLayer4" type="CanvasLayer" parent="Player"]
 

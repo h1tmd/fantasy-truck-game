@@ -93,7 +93,7 @@ func _physics_process(delta: float) -> void:
 	# Apply boost multiplier
 	var effective_max_speed: float = max_speed * (1.0 + stats["boost"])
 	# Accelerate
-	if reduce_gas >= 1500.0:
+	if reduce_gas >= stats["gas"]:
 		throttle = 0
 		
 	if throttle != 0:
@@ -183,3 +183,25 @@ func on_location_arrived(location: Location) -> void:
 # Emit signal to update quest UI
 func _on_current_quest_changed():
 	quest_changed.emit(current_quest)
+
+# -----------------------
+# Functions for player stat increase 
+func increase_max_speed(amount: float):
+	max_speed += amount
+	reverse_speed += amount
+
+func recover_gas(percentage: float):
+	reduce_gas -= stats["gas"] * percentage
+
+func increase_gas_capacity(amount: float):
+	stats["gas"] += amount
+	gas_bar.max_value += amount
+
+func increase_durability(amount: float):
+	stats["durability"] += amount
+	durability_bar.max_value += amount
+
+func recover_durability():
+	stats["durability"] = durability_bar.max_value
+
+# -----------------------
