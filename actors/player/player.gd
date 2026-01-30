@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var shield_bar := $CanvasLayer3/VBoxContainer/ShieldLabel
 @onready var load_sprite: Sprite2D = $"Truck Sprite/Load Sprite"
 @onready var gas_bar := $CanvasLayer3/VBoxContainer/Gas
+@onready var points_label: Label = $CanvasLayer3/VBoxContainer/PointsLabel
 @onready var engine := $engine
 @onready var accel := $forward
 @onready var reverse := $reverse
@@ -26,12 +27,14 @@ var stats := {
 	"durability": 100.0, # vehicle health
 	"boost": 0.0, # speed multiplier
 	"shield": 0.0, # damage reduction (0–1)
-	"gas": 1500.0
+	"gas": 1500.0,
+	"points": 0, # game points
 }
 
 # --- Quest ---
 var quest_manager: QuestManager
 signal quest_changed(quest)
+signal quest_completed
 var current_quest: Quest = null:
 	get:
 		return current_quest
@@ -168,6 +171,9 @@ func on_location_arrived(location: Location) -> void:
 		elif current_quest.status == Quest.QuestStatus.ONGOING and current_quest.end_location == location:
 			current_quest.status = Quest.QuestStatus.FINISHED
 			load_sprite.visible = false
+			quest_completed.emit()
+			stats["points"] += 500
+			points_label.text = "Points: " + str(stats["points"])
 			print("Quest Completed!")
 			
 			# Generate new quest

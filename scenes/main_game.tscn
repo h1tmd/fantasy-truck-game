@@ -26,7 +26,7 @@
 [ext_resource type="AudioStream" uid="uid://1vwgi5s4k7bu" path="res://assets/sfx/car-engine-noise-321224.mp3" id="24_on6n6"]
 [ext_resource type="AudioStream" uid="uid://dxhsolh0jn7mx" path="res://assets/sfx/a-truck-starting-from-rest-442342.mp3" id="25_x3ega"]
 [ext_resource type="AudioStream" uid="uid://c4hopkk5ootqk" path="res://assets/sfx/truck-reverse-beeper-88017.mp3" id="26_dcudo"]
-[ext_resource type="PackedScene" path="res://assets/sfx/bgMusic.tscn" id="27_x3ega"]
+[ext_resource type="PackedScene" uid="uid://dyddatpbos0vm" path="res://assets/sfx/bgMusic.tscn" id="27_x3ega"]
 
 [sub_resource type="GDScript" id="GDScript_74lek"]
 script/source = "extends ProgressBar
@@ -166,6 +166,11 @@ modulate = Color(1, 0.18039216, 0, 1)
 layout_mode = 2
 script = SubResource("GDScript_74lek")
 
+[node name="PointsLabel" type="Label" parent="Player/CanvasLayer3/VBoxContainer"]
+layout_mode = 2
+text = "Points: 0"
+horizontal_alignment = 1
+
 [node name="CanvasLayer2" type="CanvasLayer" parent="Player"]
 
 [node name="joystickControl" type="Control" parent="Player/CanvasLayer2"]
@@ -247,6 +252,7 @@ script = ExtResource("4_ikqpi")
 
 [node name="PauseMenu" type="Control" parent="Player/CanvasLayer4"]
 process_mode = 3
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 50.0
