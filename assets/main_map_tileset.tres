@@ -11,54 +11,82 @@
 texture = ExtResource("1_khwvu")
 texture_region_size = Vector2i(256, 256)
 0:0/0 = 0
+0:0/0/custom_data_0 = "road"
 1:0/0 = 0
+1:0/0/custom_data_0 = "road"
 2:0/0 = 0
+2:0/0/custom_data_0 = "road"
 3:0/0 = 0
+3:0/0/custom_data_0 = "road"
 4:0/0 = 0
+4:0/0/custom_data_0 = "road"
 5:0/0 = 0
+5:0/0/custom_data_0 = "road"
 6:0/0 = 0
+6:0/0/custom_data_0 = "road"
 1:1/0 = 0
+1:1/0/custom_data_0 = "road"
 2:1/0 = 0
+2:1/0/custom_data_0 = "road"
 3:1/0 = 0
+3:1/0/custom_data_0 = "road"
 4:1/0 = 0
+4:1/0/custom_data_0 = "road"
 5:1/0 = 0
+5:1/0/custom_data_0 = "road"
 6:1/0 = 0
+6:1/0/custom_data_0 = "road"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_drtt1"]
 texture = ExtResource("2_b4p1l")
 texture_region_size = Vector2i(256, 256)
 0:0/0 = 0
+0:0/0/custom_data_0 = "grass"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cri2f"]
 texture = ExtResource("3_drtt1")
 texture_region_size = Vector2i(256, 256)
 0:0/0 = 0
+0:0/0/custom_data_0 = "grass"
 1:0/0 = 0
+1:0/0/custom_data_0 = "grass"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bissw"]
 texture = ExtResource("4_cri2f")
 texture_region_size = Vector2i(256, 256)
 0:0/0 = 0
+0:0/0/custom_data_0 = "rock"
 1:0/0 = 0
+1:0/0/custom_data_0 = "rock"
 2:0/0 = 0
+2:0/0/custom_data_0 = "rock"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bdckk"]
 texture = ExtResource("5_bissw")
 texture_region_size = Vector2i(256, 256)
 0:0/0 = 0
+0:0/0/custom_data_0 = "ice"
 1:0/0 = 0
+1:0/0/custom_data_0 = "ice"
 2:0/0 = 0
+2:0/0/custom_data_0 = "ice"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2tj0x"]
 texture = ExtResource("6_bdckk")
 texture_region_size = Vector2i(256, 256)
 0:0/0 = 0
+0:0/0/custom_data_0 = "water"
 1:0/0 = 0
+1:0/0/custom_data_0 = "water"
 2:0/0 = 0
+2:0/0/custom_data_0 = "water"
 3:0/0 = 0
+3:0/0/custom_data_0 = "water"
 
 [resource]
 tile_size = Vector2i(256, 256)
+custom_data_layer_0/name = "surface"
+custom_data_layer_0/type = 4
 sources/0 = SubResource("TileSetAtlasSource_1xo34")
 sources/1 = SubResource("TileSetAtlasSource_drtt1")
 sources/2 = SubResource("TileSetAtlasSource_cri2f")

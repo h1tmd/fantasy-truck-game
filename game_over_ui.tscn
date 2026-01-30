@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtjqexasavuu5"]
+
+[ext_resource type="Script" uid="uid://bc1l7pp2kuqos" path="res://game_over_ui.gd" id="1_nwi6w"]
+[ext_resource type="FontFile" uid="uid://p4f8eglfukbh" path="res://assets/fonts/ThaleahFat.ttf" id="2_4fpvo"]
+[ext_resource type="FontFile" uid="uid://boon3siigxsq4" path="res://assets/fonts/Caudex-Bold.ttf" id="3_t4yam"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f3aqa"]
+bg_color = Color(0.7910071, 1, 0.77046657, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rsdxf"]
+bg_color = Color(1, 0.46101677, 0.3927373, 1)
+
+[node name="GameOverUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nwi6w")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 2309.0002
+offset_top = 1950.0002
+offset_right = 3482.0002
+offset_bottom = 2599.0002
+color = Color(0.7228208, 0.7228208, 0.7228208, 0.6666667)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 2643.0
+offset_top = 2077.0
+offset_right = 3163.0
+offset_bottom = 2260.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_4fpvo")
+theme_override_font_sizes/font_size = 130
+text = "GameOver"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="restart" type="Button" parent="."]
+layout_mode = 0
+offset_left = 2723.0
+offset_top = 2314.0
+offset_right = 3110.9998
+offset_bottom = 2405.9998
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_t4yam")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_f3aqa")
+text = "RESTART
+"
+
+[node name="exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 2723.0
+offset_top = 2441.0
+offset_right = 3110.9998
+offset_bottom = 2532.9998
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_t4yam")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_rsdxf")
+text = "EXIT
+"
+
+[connection signal="pressed" from="restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
