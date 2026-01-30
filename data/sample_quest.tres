@@ -1,12 +1,13 @@
-[gd_resource type="Resource" script_class="Quest" load_steps=3 format=3 uid="uid://c1k3rjn6sjhj3"]
+[gd_resource type="Resource" script_class="Quest" load_steps=4 format=3 uid="uid://c1k3rjn6sjhj3"]
 
 [ext_resource type="Resource" uid="uid://cnxul67thwvdq" path="res://data/sample_location.tres" id="1_fnnvg"]
 [ext_resource type="Script" uid="uid://bhslv5wdos8b4" path="res://models/quest.gd" id="1_r6tnj"]
+[ext_resource type="Resource" uid="uid://dlrq6rj53vimv" path="res://data/sample_end_location.tres" id="1_ymldw"]
 
 [resource]
 script = ExtResource("1_r6tnj")
 name = "Taxi Ride"
-type = 1
-location = ExtResource("1_fnnvg")
+starting_location = ExtResource("1_fnnvg")
+end_location = ExtResource("1_ymldw")
 time_limit = 7.0
 metadata/_custom_type_script = "uid://bhslv5wdos8b4"

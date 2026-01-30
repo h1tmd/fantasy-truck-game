@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0xk1qfjv58nd"]
+
+[ext_resource type="Script" uid="uid://sn3tp1lc4imv" path="res://objects/houses/modulate_random.gd" id="1_tsj6k"]
+[ext_resource type="Texture2D" uid="uid://curfr534ycmlk" path="res://assets/environment/house_c.png" id="2_3eyan"]
+
+[node name="House C" type="StaticBody2D"]
+script = ExtResource("1_tsj6k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_3eyan")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0.36225286, 0.36090088)
+scale = Vector2(0.49322295, 0.49496284)
+polygon = PackedVector2Array(-746.8473, -586.6317, -742.79236, 340.71063, 44.286133, 350, 44.286133, 582.8574, 674.28613, 585.71484, 677.14355, 350, 738.57227, 344.28613, 738.57227, -584.28564)

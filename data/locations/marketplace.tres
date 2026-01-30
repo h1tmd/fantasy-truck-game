@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Location" load_steps=2 format=3 uid="uid://xv0bnonlvumt"]
+
+[ext_resource type="Script" uid="uid://d2pd8at2f0w7x" path="res://models/location.gd" id="1_gvf1s"]
+
+[resource]
+script = ExtResource("1_gvf1s")
+name = "Marketplace"
+metadata/_custom_type_script = "uid://d2pd8at2f0w7x"

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://rtf41bs61h3m"]
+
+[ext_resource type="Texture2D" uid="uid://cdcrpfkbguqnd" path="res://assets/environment/tree_spiky.png" id="1_prs1c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_prs1c"]
+radius = 303.01486
+
+[node name="Spiky Tree" type="StaticBody2D"]
+z_index = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_prs1c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_prs1c")

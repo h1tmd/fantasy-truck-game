@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cl66efd13mo0t"]
+
+[ext_resource type="Script" uid="uid://sn3tp1lc4imv" path="res://objects/houses/modulate_random.gd" id="1_wgaka"]
+[ext_resource type="Texture2D" uid="uid://v2pwji23j7ai" path="res://assets/environment/house_b.png" id="2_ruap8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cyf2o"]
+size = Vector2(736.00024, 472.00018)
+
+[node name="House B" type="StaticBody2D"]
+script = ExtResource("1_wgaka")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ruap8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.99999964, 0.99999964)
+shape = SubResource("RectangleShape2D_cyf2o")

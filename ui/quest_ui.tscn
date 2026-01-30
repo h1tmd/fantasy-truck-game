@@ -1,6 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://1a63ja7as1i7"]
+[gd_scene load_steps=8 format=3 uid="uid://1a63ja7as1i7"]
 
 [ext_resource type="Script" uid="uid://b64wr0a2kypds" path="res://ui/quest_ui.gd" id="1_gbaj8"]
+[ext_resource type="Theme" uid="uid://dj6othhcq5418" path="res://ui/theme.tres" id="2_7nj6y"]
+[ext_resource type="FontFile" uid="uid://p4f8eglfukbh" path="res://assets/fonts/ThaleahFat.ttf" id="3_4xvx0"]
+
+[sub_resource type="Gradient" id="Gradient_7nj6y"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.3019608, 0.72156864, 0.40784314, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4xvx0"]
+gradient = SubResource("Gradient_7nj6y")
+width = 20
+height = 20
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_xj0m1"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.3019608, 0.5179675, 0.72156864, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tgbcj"]
+gradient = SubResource("Gradient_xj0m1")
+width = 20
+height = 20
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
 
 [node name="Quest UI" type="Control"]
 layout_mode = 3
@@ -18,12 +44,13 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -298.0
+offset_left = -234.0
 offset_top = -220.0
 offset_right = -45.0
-offset_bottom = 26.0
+offset_bottom = 85.0
 grow_horizontal = 0
 grow_vertical = 2
+theme = ExtResource("2_7nj6y")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -36,37 +63,75 @@ theme_override_constants/margin_bottom = 12
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme = ExtResource("2_7nj6y")
+theme_override_fonts/font = ExtResource("3_4xvx0")
+theme_override_font_sizes/font_size = 32
 text = "Quest Details"
 horizontal_alignment = 1
 
-[node name="Name Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 18
-text = "Quest Name"
-
 [node name="Name" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Quest Name"
+text = "Make a delivery!"
+horizontal_alignment = 1
 
-[node name="Location Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Spacer2" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
+
+[node name="Start Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Start"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_4xvx0")
+expand_mode = 2
+
+[node name="Start Location" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.3019608, 0.72156864, 0.40784314, 1)
+theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 18
 text = "Location"
 
-[node name="Location" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="End Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
-text = "Quest Name"
+text = "End"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_tgbcj")
+expand_mode = 2
+
+[node name="End Location" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.3019608, 0.5176471, 0.72156864, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 18
+text = "Location"
+
+[node name="Spacer" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
 
 [node name="Status Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
-text = "Status"
+text = "Status:"
 
 [node name="Status" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
-text = "Quest Name"
+text = "Quest Status"

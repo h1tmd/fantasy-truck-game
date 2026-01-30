@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Location" load_steps=2 format=3 uid="uid://c16pcstg0nogm"]
+
+[ext_resource type="Script" uid="uid://d2pd8at2f0w7x" path="res://models/location.gd" id="1_ip28c"]
+
+[resource]
+script = ExtResource("1_ip28c")
+name = "Central Fountain"
+metadata/_custom_type_script = "uid://d2pd8at2f0w7x"

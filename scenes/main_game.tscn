@@ -1,0 +1,337 @@
+[gd_scene load_steps=47 format=3 uid="uid://0a4sac7166s3"]
+
+[ext_resource type="PackedScene" uid="uid://bdkumy0hsg5qy" path="res://scenes/main_map.tscn" id="1_ipu61"]
+[ext_resource type="PackedScene" uid="uid://cadl6hjl3d2cy" path="res://actors/player/player.tscn" id="2_ygxny"]
+[ext_resource type="Script" uid="uid://0q5hmmmglakc" path="res://scenes/control.gd" id="3_vnsdt"]
+[ext_resource type="Script" uid="uid://bvk41wm4a8q8" path="res://scenes/pause_menu.gd" id="4_70vka"]
+[ext_resource type="Texture2D" uid="uid://hxku00xy0ago" path="res://ui/addons/arrow_left.png" id="4_ibnub"]
+[ext_resource type="Script" uid="uid://dlj2erl5at31j" path="res://ui/control_button.gd" id="4_ikqpi"]
+[ext_resource type="Script" uid="uid://cs68ig6opox8r" path="res://scenes/button.gd" id="5_2l77h"]
+[ext_resource type="Texture2D" uid="uid://baoonk83ongqv" path="res://ui/addons/arrow_right.png" id="6_5wboo"]
+[ext_resource type="PackedScene" uid="uid://csa6wbw37bdv4" path="res://actors/components/location_area.tscn" id="6_ygxny"]
+[ext_resource type="Texture2D" uid="uid://ceu5g7ych1dmk" path="res://ui/addons/arrow_up.png" id="7_6de02"]
+[ext_resource type="Resource" uid="uid://mxgiao4caxe" path="res://data/locations/castle.tres" id="7_wi4c7"]
+[ext_resource type="Resource" uid="uid://chtbl182b56cu" path="res://data/locations/blacksmith.tres" id="8_2l77h"]
+[ext_resource type="Texture2D" uid="uid://cilop34oe78p5" path="res://ui/addons/arrow_down.png" id="8_cybgu"]
+[ext_resource type="Resource" uid="uid://cb8kkqmfx7qfu" path="res://data/locations/cave.tres" id="8_nqdth"]
+[ext_resource type="Resource" uid="uid://c16pcstg0nogm" path="res://data/locations/fountain.tres" id="9_nqdth"]
+[ext_resource type="Texture2D" uid="uid://dyt4v63seig12" path="res://ui/addons/pngwing.com.png" id="10_5wboo"]
+[ext_resource type="Resource" uid="uid://og2kcn0w858d" path="res://data/locations/dock.tres" id="10_wjob3"]
+[ext_resource type="Resource" uid="uid://cwf8308d5sfy3" path="res://data/locations/farm.tres" id="11_8xp80"]
+[ext_resource type="Resource" uid="uid://diyfik4mkkafx" path="res://data/locations/guild.tres" id="13_sp04v"]
+[ext_resource type="Resource" uid="uid://6f47f14vd58t" path="res://data/locations/library.tres" id="14_sp04v"]
+[ext_resource type="Resource" uid="uid://4xiter26ufx3" path="res://data/locations/lumberjack.tres" id="15_ihbck"]
+[ext_resource type="Resource" uid="uid://xv0bnonlvumt" path="res://data/locations/marketplace.tres" id="16_ihbck"]
+[ext_resource type="PackedScene" uid="uid://1a63ja7as1i7" path="res://ui/quest_ui.tscn" id="17_vnsdt"]
+[ext_resource type="AudioStream" uid="uid://1vwgi5s4k7bu" path="res://assets/sfx/car-engine-noise-321224.mp3" id="24_on6n6"]
+[ext_resource type="AudioStream" uid="uid://dxhsolh0jn7mx" path="res://assets/sfx/a-truck-starting-from-rest-442342.mp3" id="25_x3ega"]
+[ext_resource type="AudioStream" uid="uid://c4hopkk5ootqk" path="res://assets/sfx/truck-reverse-beeper-88017.mp3" id="26_dcudo"]
+[ext_resource type="PackedScene" path="res://assets/sfx/bgMusic.tscn" id="27_x3ega"]
+
+[sub_resource type="GDScript" id="GDScript_74lek"]
+script/source = "extends ProgressBar
+
+
+# Called when the node enters the scene tree for the first time.
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibnub"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6de02"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cybgu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wdxbp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5wboo"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_on6n6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x3ega"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dcudo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6de02"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_307no"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rr87q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dp0eu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nqdth"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cybgu"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_5wboo"]
+color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_urnot"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4e2rb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6vdpn"]
+
+[node name="Main Game" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Quest UI" parent="CanvasLayer" instance=ExtResource("17_vnsdt")]
+mouse_filter = 1
+
+[node name="Main Map" parent="." instance=ExtResource("1_ipu61")]
+scale = Vector2(0.4, 0.4)
+metadata/_edit_lock_ = true
+
+[node name="Locations" type="Node2D" parent="."]
+
+[node name="Blacksmith" parent="Locations" instance=ExtResource("6_ygxny")]
+position = Vector2(4223, 358)
+location_res = ExtResource("8_2l77h")
+
+[node name="Castle" parent="Locations" instance=ExtResource("6_ygxny")]
+position = Vector2(642, 169)
+location_res = ExtResource("7_wi4c7")
+
+[node name="Cave" parent="Locations" instance=ExtResource("6_ygxny")]
+position = Vector2(6526, 641)
+location_res = ExtResource("8_nqdth")
+
+[node name="Dock" parent="Locations" instance=ExtResource("6_ygxny")]
+position = Vector2(358.00003, 4739)
+location_res = ExtResource("10_wjob3")
+
+[node name="Farm" parent="Locations" instance=ExtResource("6_ygxny")]
+position = Vector2(2403, 443.00006)
+location_res = ExtResource("11_8xp80")
+
+[node name="Fountain" parent="Locations" instance=ExtResource("6_ygxny")]
+position = Vector2(2913.0005, 1985.9999)
+location_res = ExtResource("9_nqdth")
+
+[node name="Guild" parent="Locations" instance=ExtResource("6_ygxny")]
+position = Vector2(6014, 3007)
+location_res = ExtResource("13_sp04v")
+
+[node name="Libary" parent="Locations" instance=ExtResource("6_ygxny")]
+position = Vector2(3946, 2909.0002)
+location_res = ExtResource("14_sp04v")
+
+[node name="Lumberjack" parent="Locations" instance=ExtResource("6_ygxny")]
+position = Vector2(6605, 5058)
+location_res = ExtResource("15_ihbck")
+
+[node name="Marketplace" parent="Locations" instance=ExtResource("6_ygxny")]
+position = Vector2(1268.0005, 3428)
+location_res = ExtResource("16_ihbck")
+
+[node name="Player" parent="." instance=ExtResource("2_ygxny")]
+position = Vector2(2901, 2273)
+scale = Vector2(1.6, 1.6)
+max_speed = 250.0
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="Player"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Player/CanvasLayer3"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 89.0
+grow_horizontal = 2
+
+[node name="BoostLabel" type="ProgressBar" parent="Player/CanvasLayer3/VBoxContainer"]
+modulate = Color(0.49803922, 1, 1, 1)
+layout_mode = 2
+
+[node name="DurabilityBar" type="ProgressBar" parent="Player/CanvasLayer3/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="ShieldLabel" type="ProgressBar" parent="Player/CanvasLayer3/VBoxContainer"]
+layout_mode = 2
+
+[node name="Gas" type="ProgressBar" parent="Player/CanvasLayer3/VBoxContainer"]
+modulate = Color(1, 0.18039216, 0, 1)
+layout_mode = 2
+script = SubResource("GDScript_74lek")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="Player"]
+
+[node name="joystickControl" type="Control" parent="Player/CanvasLayer2"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_vnsdt")
+
+[node name="LeftButton" type="Button" parent="Player/CanvasLayer2/joystickControl"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 62.0
+offset_top = 436.0
+offset_right = 162.0
+offset_bottom = 536.0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ibnub")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6de02")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_cybgu")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wdxbp")
+icon = ExtResource("4_ibnub")
+script = ExtResource("4_ikqpi")
+
+[node name="RightButton" type="Button" parent="Player/CanvasLayer2/joystickControl"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 238.0
+offset_top = 475.0
+offset_right = 361.0
+offset_bottom = 536.0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_5wboo")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_on6n6")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_x3ega")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dcudo")
+icon = ExtResource("6_5wboo")
+script = ExtResource("4_ikqpi")
+
+[node name="UpButton" type="Button" parent="Player/CanvasLayer2/joystickControl"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 903.0
+offset_top = 336.0
+offset_right = 1003.0
+offset_bottom = 443.0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_6de02")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_307no")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_rr87q")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dp0eu")
+icon = ExtResource("7_6de02")
+script = ExtResource("4_ikqpi")
+
+[node name="DownButton" type="Button" parent="Player/CanvasLayer2/joystickControl"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 900.0
+offset_top = 477.0
+offset_right = 1000.0
+offset_bottom = 584.0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_6de02")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_307no")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_rr87q")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dp0eu")
+icon = ExtResource("8_cybgu")
+script = ExtResource("4_ikqpi")
+
+[node name="CanvasLayer4" type="CanvasLayer" parent="Player"]
+
+[node name="PauseMenu" type="Control" parent="Player/CanvasLayer4"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_left = 50.0
+offset_top = 274.0
+offset_right = 1184.0
+offset_bottom = 911.0
+script = ExtResource("4_70vka")
+
+[node name="Panel" type="Panel" parent="Player/CanvasLayer4/PauseMenu"]
+layout_mode = 0
+offset_left = -52.0
+offset_top = -270.0
+offset_right = 1098.0
+offset_bottom = 377.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Player/CanvasLayer4/PauseMenu/Panel"]
+layout_mode = 0
+offset_left = 366.0
+offset_top = 181.0
+offset_right = 788.0
+offset_bottom = 488.0
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Player/CanvasLayer4/PauseMenu/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="resumeBtn" type="Button" parent="Player/CanvasLayer4/PauseMenu/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_nqdth")
+text = "Resume"
+
+[node name="optionsBtn" type="Button" parent="Player/CanvasLayer4/PauseMenu/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_nqdth")
+text = "Options"
+
+[node name="exitBtn" type="Button" parent="Player/CanvasLayer4/PauseMenu/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_nqdth")
+text = "Exit"
+
+[node name="PauseBtn" type="Button" parent="Player/CanvasLayer4"]
+offset_left = 1032.0
+offset_top = 17.000008
+offset_right = 1552.0
+offset_bottom = 537.0
+scale = Vector2(0.17, 0.17)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_cybgu")
+theme_override_styles/pressed = SubResource("StyleBoxLine_5wboo")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_urnot")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4e2rb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6vdpn")
+icon = ExtResource("10_5wboo")
+script = ExtResource("5_2l77h")
+
+[node name="engine" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource("24_on6n6")
+autoplay = true
+
+[node name="forward" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource("25_x3ega")
+autoplay = true
+
+[node name="reverse" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource("26_dcudo")
+autoplay = true
+
+[node name="AudioStreamPlayer2D" parent="." instance=ExtResource("27_x3ega")]
+position = Vector2(2901, 2273)
+scale = Vector2(1.6, 1.6)
+
+[connection signal="pressed" from="Player/CanvasLayer4/PauseMenu/Panel/VBoxContainer/resumeBtn" to="Player/CanvasLayer4/PauseMenu" method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="Player/CanvasLayer4/PauseMenu/Panel/VBoxContainer/optionsBtn" to="Player/CanvasLayer4/PauseMenu" method="_on_options_btn_pressed"]
+[connection signal="pressed" from="Player/CanvasLayer4/PauseMenu/Panel/VBoxContainer/exitBtn" to="Player/CanvasLayer4/PauseMenu" method="_on_exit_btn_pressed"]
