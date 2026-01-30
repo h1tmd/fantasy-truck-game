@@ -5,8 +5,8 @@
 [ext_resource type="FontFile" uid="uid://p4f8eglfukbh" path="res://assets/fonts/ThaleahFat.ttf" id="3_4xvx0"]
 
 [sub_resource type="Gradient" id="Gradient_7nj6y"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.3019608, 0.72156864, 0.40784314, 1)
+offsets = PackedFloat32Array(0.8267327, 1)
+colors = PackedColorArray(0.3019608, 0.72156864, 0.40784314, 1, 0.3019608, 0.72156864, 0.40784314, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_4xvx0"]
 gradient = SubResource("Gradient_7nj6y")
@@ -17,8 +17,8 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
 [sub_resource type="Gradient" id="Gradient_xj0m1"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.3019608, 0.5179675, 0.72156864, 1)
+offsets = PackedFloat32Array(0.85643566, 1)
+colors = PackedColorArray(0.3019608, 0.5179675, 0.72156864, 1, 0.3019608, 0.5176471, 0.72156864, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_tgbcj"]
 gradient = SubResource("Gradient_xj0m1")
@@ -44,10 +44,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -234.0
-offset_top = -220.0
-offset_right = -45.0
-offset_bottom = 85.0
+offset_left = -238.0
+offset_top = -242.0
+offset_right = -20.0
+offset_bottom = 39.0
 grow_horizontal = 0
 grow_vertical = 2
 theme = ExtResource("2_7nj6y")
@@ -75,10 +75,6 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "Make a delivery!"
 horizontal_alignment = 1
-
-[node name="Spacer2" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
 
 [node name="Start Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

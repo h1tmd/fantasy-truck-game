@@ -16,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://cilop34oe78p5" path="res://ui/addons/arrow_down.png" id="8_cybgu"]
 [ext_resource type="Resource" uid="uid://cb8kkqmfx7qfu" path="res://data/locations/cave.tres" id="8_nqdth"]
 [ext_resource type="Resource" uid="uid://c16pcstg0nogm" path="res://data/locations/fountain.tres" id="9_nqdth"]
-[ext_resource type="Texture2D" uid="uid://dyt4v63seig12" path="res://ui/addons/pngwing.com.png" id="10_5wboo"]
 [ext_resource type="Resource" uid="uid://og2kcn0w858d" path="res://data/locations/dock.tres" id="10_wjob3"]
 [ext_resource type="Resource" uid="uid://cwf8308d5sfy3" path="res://data/locations/farm.tres" id="11_8xp80"]
 [ext_resource type="Resource" uid="uid://diyfik4mkkafx" path="res://data/locations/guild.tres" id="13_sp04v"]
@@ -24,6 +23,7 @@
 [ext_resource type="Resource" uid="uid://4xiter26ufx3" path="res://data/locations/lumberjack.tres" id="15_ihbck"]
 [ext_resource type="Resource" uid="uid://xv0bnonlvumt" path="res://data/locations/marketplace.tres" id="16_ihbck"]
 [ext_resource type="PackedScene" uid="uid://1a63ja7as1i7" path="res://ui/quest_ui.tscn" id="17_vnsdt"]
+[ext_resource type="Texture2D" uid="uid://cpy4swj7r5b2p" path="res://assets/icons/pause-icon.png" id="23_dcudo"]
 [ext_resource type="AudioStream" uid="uid://1vwgi5s4k7bu" path="res://assets/sfx/car-engine-noise-321224.mp3" id="24_on6n6"]
 [ext_resource type="AudioStream" uid="uid://dxhsolh0jn7mx" path="res://assets/sfx/a-truck-starting-from-rest-442342.mp3" id="25_x3ega"]
 [ext_resource type="AudioStream" uid="uid://c4hopkk5ootqk" path="res://assets/sfx/truck-reverse-beeper-88017.mp3" id="26_dcudo"]
@@ -176,9 +176,11 @@ horizontal_alignment = 1
 
 [node name="joystickControl" type="Control" parent="Player/CanvasLayer2"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("3_vnsdt")
 
 [node name="LeftButton" type="Button" parent="Player/CanvasLayer2/joystickControl"]
@@ -186,10 +188,10 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 62.0
-offset_top = 436.0
-offset_right = 162.0
-offset_bottom = 536.0
+offset_left = 65.0
+offset_top = -152.0
+offset_right = 165.0
+offset_bottom = -52.0
 grow_vertical = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_ibnub")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_6de02")
@@ -203,10 +205,10 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 238.0
-offset_top = 475.0
-offset_right = 361.0
-offset_bottom = 536.0
+offset_left = 212.0
+offset_top = -152.0
+offset_right = 335.0
+offset_bottom = -52.0
 grow_vertical = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_5wboo")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_on6n6")
@@ -217,13 +219,16 @@ script = ExtResource("4_ikqpi")
 
 [node name="UpButton" type="Button" parent="Player/CanvasLayer2/joystickControl"]
 layout_mode = 1
-anchors_preset = 2
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 903.0
-offset_top = 336.0
-offset_right = 1003.0
-offset_bottom = 443.0
+offset_left = -216.0
+offset_top = -258.0
+offset_right = -116.0
+offset_bottom = -151.0
+grow_horizontal = 0
 grow_vertical = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_6de02")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_307no")
@@ -234,13 +239,16 @@ script = ExtResource("4_ikqpi")
 
 [node name="DownButton" type="Button" parent="Player/CanvasLayer2/joystickControl"]
 layout_mode = 1
-anchors_preset = 2
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 900.0
-offset_top = 477.0
-offset_right = 1000.0
-offset_bottom = 584.0
+offset_left = -216.0
+offset_top = -141.0
+offset_right = -116.0
+offset_bottom = -34.0
+grow_horizontal = 0
 grow_vertical = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_6de02")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_307no")
@@ -250,6 +258,7 @@ icon = ExtResource("8_cybgu")
 script = ExtResource("4_ikqpi")
 
 [node name="Quest Reward Popup" parent="Player/CanvasLayer2" instance=ExtResource("2_dcudo")]
+visible = false
 
 [node name="CanvasLayer4" type="CanvasLayer" parent="Player"]
 
@@ -257,26 +266,34 @@ script = ExtResource("4_ikqpi")
 process_mode = 3
 visible = false
 layout_mode = 3
-anchors_preset = 0
-offset_left = 50.0
-offset_top = 274.0
-offset_right = 1184.0
-offset_bottom = 911.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("4_70vka")
 
 [node name="Panel" type="Panel" parent="Player/CanvasLayer4/PauseMenu"]
-layout_mode = 0
-offset_left = -52.0
-offset_top = -270.0
-offset_right = 1098.0
-offset_bottom = 377.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Player/CanvasLayer4/PauseMenu/Panel"]
-layout_mode = 0
-offset_left = 366.0
-offset_top = 181.0
-offset_right = 788.0
-offset_bottom = 488.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -211.0
+offset_top = -153.5
+offset_right = 211.0
+offset_bottom = 153.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="Player/CanvasLayer4/PauseMenu/Panel/VBoxContainer"]
@@ -311,18 +328,19 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_nqdth")
 text = "Exit"
 
 [node name="PauseBtn" type="Button" parent="Player/CanvasLayer4"]
-offset_left = 1032.0
-offset_top = 17.000008
-offset_right = 1552.0
-offset_bottom = 537.0
-scale = Vector2(0.17, 0.17)
+offset_left = 21.999998
+offset_top = 28.999996
+offset_right = 64.0
+offset_bottom = 71.0
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_cybgu")
 theme_override_styles/pressed = SubResource("StyleBoxLine_5wboo")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_urnot")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_4e2rb")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_6vdpn")
-icon = ExtResource("10_5wboo")
+icon = ExtResource("23_dcudo")
+icon_alignment = 1
+expand_icon = true
 script = ExtResource("5_2l77h")
 
 [node name="engine" type="AudioStreamPlayer2D" parent="Player"]
