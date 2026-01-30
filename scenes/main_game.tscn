@@ -1,6 +1,7 @@
-[gd_scene load_steps=48 format=3 uid="uid://0a4sac7166s3"]
+[gd_scene load_steps=49 format=3 uid="uid://0a4sac7166s3"]
 
 [ext_resource type="PackedScene" uid="uid://bdkumy0hsg5qy" path="res://scenes/main_map.tscn" id="1_ipu61"]
+[ext_resource type="PackedScene" uid="uid://bo546vy8e6q7f" path="res://ui/minimap.tscn" id="2_307no"]
 [ext_resource type="PackedScene" uid="uid://dnm5d1b7wdkm1" path="res://ui/quest_reward_popup.tscn" id="2_dcudo"]
 [ext_resource type="PackedScene" uid="uid://cadl6hjl3d2cy" path="res://actors/player/player.tscn" id="2_ygxny"]
 [ext_resource type="Script" uid="uid://0q5hmmmglakc" path="res://scenes/control.gd" id="3_vnsdt"]
@@ -87,7 +88,29 @@ color = Color(0, 0, 0, 0)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Quest UI" parent="CanvasLayer" instance=ExtResource("17_vnsdt")]
+anchors_preset = 1
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_left = -5.0
+offset_top = 145.0
+offset_right = -5.0
+offset_bottom = 145.0
+grow_vertical = 1
+size_flags_horizontal = 8
+size_flags_vertical = 4
 mouse_filter = 1
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -451.0
+offset_bottom = 297.0
+grow_horizontal = 0
+
+[node name="Minimap" parent="CanvasLayer/Control" instance=ExtResource("2_307no")]
+position = Vector2(0, 6)
 
 [node name="Main Map" parent="." instance=ExtResource("1_ipu61")]
 scale = Vector2(0.4, 0.4)

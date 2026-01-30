@@ -23,6 +23,7 @@ project/assembly_name="Godot-simple-rpg"
 [global_group]
 
 player="group for getting reference to player/s"
+minimap=""
 
 [input]
 
