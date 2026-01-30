@@ -1,12 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://dk6pqn108p3nd"]
 
 [ext_resource type="Script" uid="uid://bpxsk0ht4mrp1" path="res://ui/mainMenu/main_menu.gd" id="1_4v2p4"]
-[ext_resource type="Texture2D" uid="uid://136o2evjbx8k" path="res://ui/mainMenu/mainMenuBgsample.png" id="1_nt7ef"]
-[ext_resource type="FontFile" uid="uid://ctvc3s0k7dq70" path="res://ui/mainMenu/Pro Racing.otf" id="2_4v2p4"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uop2g"]
-texture = ExtResource("1_nt7ef")
-modulate_color = Color(0.41359377, 0.41359377, 0.41359377, 1)
+[ext_resource type="Texture2D" uid="uid://cn7l3svj7mj20" path="res://ui/mainMenu/mainMenuBg.png" id="2_i8bv3"]
+[ext_resource type="FontFile" uid="uid://boon3siigxsq4" path="res://assets/fonts/Caudex-Bold.ttf" id="3_i8bv3"]
+[ext_resource type="FontFile" uid="uid://cbbmm2g5ewneh" path="res://assets/fonts/Caudex-Regular.ttf" id="4_5q6sl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_djoiu"]
 bg_color = Color(0.93632597, 0.93632597, 0.93632597, 1)
@@ -25,29 +22,32 @@ bg_color = Color(0.6657064, 0.6657064, 0.6657064, 1)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4v2p4")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -575.0
-offset_top = -320.0
-offset_right = 573.0
-offset_bottom = 324.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_uop2g")
+texture = ExtResource("2_i8bv3")
+expand_mode = 5
+stretch_mode = 6
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -57,12 +57,36 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -201.0
-offset_top = -69.0
+offset_top = -162.5
 offset_right = 201.0
-offset_bottom = 223.0
+offset_bottom = 162.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 9
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0.5019608, 1)
+theme_override_colors/font_outline_color = Color(0.35686275, 0.22745098, 0.078431375, 1)
+theme_override_constants/outline_size = 30
+theme_override_fonts/font = ExtResource("3_i8bv3")
+theme_override_font_sizes/font_size = 70
+text = "ISEKAI TRUCK"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0.5019608, 1)
+theme_override_colors/font_outline_color = Color(0.35686275, 0.22745098, 0.078431375, 1)
+theme_override_constants/line_spacing = -8
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("4_5q6sl")
+theme_override_font_sizes/font_size = 35
+text = "That Time I Got Reincarnated
+into Another World with My Truck"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -108,22 +132,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_djoiu")
 theme_override_styles/hover = SubResource("StyleBoxFlat_nt7ef")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_nt7ef")
 text = "EXIT"
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -424.0
-offset_top = -213.0
-offset_right = 415.0
-offset_bottom = -143.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("2_4v2p4")
-theme_override_font_sizes/font_size = 60
-text = "AutoBots owkwokwo"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_options_pressed"]
