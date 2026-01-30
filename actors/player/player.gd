@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var shield_bar := $CanvasLayer3/VBoxContainer/ShieldLabel
 @onready var load_sprite: Sprite2D = $"Truck Sprite/Load Sprite"
 @onready var gas_bar := $CanvasLayer3/VBoxContainer/Gas
+@onready var points_label: Label = $CanvasLayer3/VBoxContainer/PointsLabel
 @onready var engine := $engine
 @onready var accel := $forward
 @onready var reverse := $reverse
@@ -26,12 +27,14 @@ var stats := {
 	"durability": 100.0, # vehicle health
 	"boost": 0.0, # speed multiplier
 	"shield": 0.0, # damage reduction (0–1)
-	"gas": 1500.0
+	"gas": 1500.0,
+	"points": 0, # game points
 }
 
 # --- Quest ---
 var quest_manager: QuestManager
 signal quest_changed(quest)
+signal quest_completed
 var current_quest: Quest = null:
 	get:
 		return current_quest
@@ -76,7 +79,7 @@ func _physics_process(delta: float) -> void:
 	
 		
 	var gas_reduction := (Input.get_action_strength("car_forward") + Input.get_action_strength("car_reverse"))
-	reduce_gas += gas_reduction
+	reduce_gas += gas_reduction * 0.5
 	
 	#print(throttle)
 	#var reduce :=  100 - throttle
@@ -90,7 +93,7 @@ func _physics_process(delta: float) -> void:
 	# Apply boost multiplier
 	var effective_max_speed: float = max_speed * (1.0 + stats["boost"])
 	# Accelerate
-	if reduce_gas >= 1500.0:
+	if reduce_gas >= stats["gas"]:
 		throttle = 0
 		
 	if throttle != 0:
@@ -168,6 +171,9 @@ func on_location_arrived(location: Location) -> void:
 		elif current_quest.status == Quest.QuestStatus.ONGOING and current_quest.end_location == location:
 			current_quest.status = Quest.QuestStatus.FINISHED
 			load_sprite.visible = false
+			quest_completed.emit()
+			stats["points"] += 500
+			points_label.text = "Points: " + str(stats["points"])
 			print("Quest Completed!")
 			
 			# Generate new quest
@@ -177,3 +183,25 @@ func on_location_arrived(location: Location) -> void:
 # Emit signal to update quest UI
 func _on_current_quest_changed():
 	quest_changed.emit(current_quest)
+
+# -----------------------
+# Functions for player stat increase 
+func increase_max_speed(amount: float):
+	max_speed += amount
+	reverse_speed += amount
+
+func recover_gas(percentage: float):
+	reduce_gas = max(reduce_gas - stats["gas"] * percentage, 0)
+
+func increase_gas_capacity(amount: float):
+	stats["gas"] += amount
+	gas_bar.max_value += amount
+
+func increase_durability(amount: float):
+	stats["durability"] += amount
+	durability_bar.max_value += amount
+
+func recover_durability():
+	stats["durability"] = durability_bar.max_value
+
+# -----------------------

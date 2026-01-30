@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PlayerReward" load_steps=2 format=3 uid="uid://8ya1rqibv7w6"]
+
+[ext_resource type="Script" uid="uid://cysyo6xp5wh1r" path="res://systems/player_reward.gd" id="1_0vha4"]
+
+[resource]
+script = ExtResource("1_0vha4")
+reward_description = "Temporarily receive a speed boost."
+player_method_name = "apply_boost"
+method_args = [0.4, 30.0]
+metadata/_custom_type_script = "uid://cysyo6xp5wh1r"

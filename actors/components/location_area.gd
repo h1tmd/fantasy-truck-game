@@ -11,9 +11,9 @@ func _ready() -> void:
 		_on_quest_changed(player.current_quest)
 
 func _on_body_entered(body: Node2D) -> void:
-	print("body entered")
+	#print("body entered")
 	if body is Player:
-		print("body is Player")
+		#print("body is Player")
 		body.on_location_arrived(location_res)
 
 func _on_quest_changed(quest: Quest):

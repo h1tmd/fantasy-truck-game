@@ -1,6 +1,7 @@
-[gd_scene load_steps=47 format=3 uid="uid://0a4sac7166s3"]
+[gd_scene load_steps=48 format=3 uid="uid://0a4sac7166s3"]
 
 [ext_resource type="PackedScene" uid="uid://bdkumy0hsg5qy" path="res://scenes/main_map.tscn" id="1_ipu61"]
+[ext_resource type="PackedScene" uid="uid://dnm5d1b7wdkm1" path="res://ui/quest_reward_popup.tscn" id="2_dcudo"]
 [ext_resource type="PackedScene" uid="uid://cadl6hjl3d2cy" path="res://actors/player/player.tscn" id="2_ygxny"]
 [ext_resource type="Script" uid="uid://0q5hmmmglakc" path="res://scenes/control.gd" id="3_vnsdt"]
 [ext_resource type="Script" uid="uid://bvk41wm4a8q8" path="res://scenes/pause_menu.gd" id="4_70vka"]
@@ -26,7 +27,7 @@
 [ext_resource type="AudioStream" uid="uid://1vwgi5s4k7bu" path="res://assets/sfx/car-engine-noise-321224.mp3" id="24_on6n6"]
 [ext_resource type="AudioStream" uid="uid://dxhsolh0jn7mx" path="res://assets/sfx/a-truck-starting-from-rest-442342.mp3" id="25_x3ega"]
 [ext_resource type="AudioStream" uid="uid://c4hopkk5ootqk" path="res://assets/sfx/truck-reverse-beeper-88017.mp3" id="26_dcudo"]
-[ext_resource type="PackedScene" path="res://assets/sfx/bgMusic.tscn" id="27_x3ega"]
+[ext_resource type="PackedScene" uid="uid://dyddatpbos0vm" path="res://assets/sfx/bgMusic.tscn" id="27_x3ega"]
 
 [sub_resource type="GDScript" id="GDScript_74lek"]
 script/source = "extends ProgressBar
@@ -166,6 +167,11 @@ modulate = Color(1, 0.18039216, 0, 1)
 layout_mode = 2
 script = SubResource("GDScript_74lek")
 
+[node name="PointsLabel" type="Label" parent="Player/CanvasLayer3/VBoxContainer"]
+layout_mode = 2
+text = "Points: 0"
+horizontal_alignment = 1
+
 [node name="CanvasLayer2" type="CanvasLayer" parent="Player"]
 
 [node name="joystickControl" type="Control" parent="Player/CanvasLayer2"]
@@ -243,10 +249,13 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_dp0eu")
 icon = ExtResource("8_cybgu")
 script = ExtResource("4_ikqpi")
 
+[node name="Quest Reward Popup" parent="Player/CanvasLayer2" instance=ExtResource("2_dcudo")]
+
 [node name="CanvasLayer4" type="CanvasLayer" parent="Player"]
 
 [node name="PauseMenu" type="Control" parent="Player/CanvasLayer4"]
 process_mode = 3
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 50.0

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PlayerReward" load_steps=2 format=3 uid="uid://o1dqcv36h147"]
+
+[ext_resource type="Script" uid="uid://cysyo6xp5wh1r" path="res://systems/player_reward.gd" id="1_1pufy"]
+
+[resource]
+script = ExtResource("1_1pufy")
+reward_description = "Permanently increase speed."
+player_method_name = "increase_max_speed"
+method_args = [50.0]
+metadata/_custom_type_script = "uid://cysyo6xp5wh1r"
