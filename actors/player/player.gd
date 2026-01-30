@@ -78,7 +78,7 @@ func _physics_process(delta: float) -> void:
 	var gas_reduction := (Input.get_action_strength("car_forward") + Input.get_action_strength("car_reverse"))
 	reduce_gas += gas_reduction
 	
-	print(throttle)
+	#print(throttle)
 	#var reduce :=  100 - throttle
 	#print(gas_reduction)S
 	# Rotate only if moving
