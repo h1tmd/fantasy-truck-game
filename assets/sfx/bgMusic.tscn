@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyddatpbos0vm"]
+
+[ext_resource type="AudioStream" uid="uid://dyvisc7buqesd" path="res://assets/sfx/bgmusicsEpic.wav" id="1_te7wv"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_te7wv")
+autoplay = true
