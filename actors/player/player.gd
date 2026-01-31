@@ -2,6 +2,11 @@
 class_name Player
 extends CharacterBody2D
 
+@onready var road_layer: TileMapLayer = get_node("/root/Main Game/Main Map/Road")
+@onready var grass_layer: TileMapLayer = get_node("/root/Main Game/Main Map/Grass")
+@onready var water_layer: TileMapLayer = get_node("/root/Main Game/Main Map/Water")
+@onready var environments_layer: TileMapLayer = get_node("/root/Main Game/Main Map/Environments")
+
 # --- UI References ---
 @onready var durability_bar := $CanvasLayer3/VBoxContainer/DurabilityBar
 @onready var boost_bar := $CanvasLayer3/VBoxContainer/BoostLabel
@@ -21,6 +26,43 @@ extends CharacterBody2D
 @export var reverse_speed: float = 100.0
 @export var reduce_gas: float = 0.0
 @export var is_gas_gone: bool = false
+
+
+	
+
+func _on_game_over() -> void:
+	print("Game Over! You fell into water.")
+	velocity = Vector2.ZERO
+	set_physics_process(false)
+	 # Load the GameOver scene and show it
+	var game_over_ui = load("res://game_over_ui.tscn").instantiate()
+	get_tree().current_scene.add_child(game_over_ui)
+	game_over_ui.show_menu()
+	
+# --- Surface ---
+func get_surface_type() -> String:
+	# Check which layer the player is over
+	var layers = {
+		"environment": environments_layer,
+		"road": road_layer,
+		"water": water_layer,
+		"grass": grass_layer,
+	}
+
+	for surface_name in layers.keys():
+		var layer = layers[surface_name]
+		var cell = layer.local_to_map(layer.to_local(global_position))
+		
+		#print("Checking layer ", surface_name, " at cell ", cell)
+		var data = layer.get_cell_tile_data(cell)
+		if data:
+			return data.get_custom_data("surface")
+	
+	return "road"  # default fallback
+		
+	
+
+
 
 # --- Player Stats ---
 var stats := {
@@ -59,9 +101,20 @@ func _ready() -> void:
 	# Initial UI update
 	_update_ui()
 
+ 
+
 
 # -----------------------
 func _physics_process(delta: float) -> void:
+	var surface = get_surface_type()
+	#print(surface)
+	# --- Check for Game Over ---
+	if surface == "water":
+		_on_game_over()
+		return  # stop further movement immediately
+	
+
+	 
 	var throttle := Input.get_action_strength("car_forward") - Input.get_action_strength("car_reverse")
 	var steering := Input.get_action_strength("car_right") - Input.get_action_strength("car_left")
 	if throttle > 0:
@@ -92,6 +145,24 @@ func _physics_process(delta: float) -> void:
 
 	# Apply boost multiplier
 	var effective_max_speed: float = max_speed * (1.0 + stats["boost"])
+	# --- Apply surface modifiers ---
+	match get_surface_type():
+		"road":
+			effective_max_speed *= 1.0   # full speed
+			friction = 800
+		"forest":
+			effective_max_speed *= 0.9
+			friction = 1000
+		"grass":
+			effective_max_speed *= 0.6   # slower on grass
+			friction = 800
+		"rock":
+			effective_max_speed *= 0.8   # idk where is this environment
+			friction = 800
+		"ice":
+			friction = 100
+
+	
 	# Accelerate
 	if reduce_gas >= stats["gas"]:
 		throttle = 0

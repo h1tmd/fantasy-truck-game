@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtjqexasavuu5"]
+
+[ext_resource type="Script" uid="uid://bc1l7pp2kuqos" path="res://game_over_ui.gd" id="1_nwi6w"]
+[ext_resource type="FontFile" uid="uid://p4f8eglfukbh" path="res://assets/fonts/ThaleahFat.ttf" id="2_4fpvo"]
+[ext_resource type="FontFile" uid="uid://boon3siigxsq4" path="res://assets/fonts/Caudex-Bold.ttf" id="3_t4yam"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f3aqa"]
+bg_color = Color(0.7910071, 1, 0.77046657, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rsdxf"]
+bg_color = Color(1, 0.46101677, 0.3927373, 1)
+
+[node name="GameOverUI" type="CanvasLayer"]
+script = ExtResource("1_nwi6w")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1173.0
+offset_bottom = 649.0
+color = Color(0.7228208, 0.7228208, 0.7228208, 0.6666667)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -245.0
+offset_top = -229.0
+offset_right = 275.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_4fpvo")
+theme_override_font_sizes/font_size = 130
+text = "GameOver"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="restart" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -193.99988
+offset_top = -45.999878
+offset_right = 193.99988
+offset_bottom = 45.999878
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_t4yam")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_f3aqa")
+text = "RESTART
+"
+
+[node name="exit" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -193.99988
+offset_top = 89.0
+offset_right = 193.99988
+offset_bottom = 180.99976
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_t4yam")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_rsdxf")
+text = "EXIT
+"
+
+[connection signal="pressed" from="restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
