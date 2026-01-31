@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=15 format=4 uid="uid://dj6othhcq5418"]
+[gd_resource type="Theme" load_steps=16 format=4 uid="uid://dj6othhcq5418"]
 
 [sub_resource type="Image" id="Image_denks"]
 data = {
@@ -2248,6 +2248,14 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqugq"]
+content_margin_top = 8.0
+bg_color = Color(0.4765625, 0.4765625, 0.4765625, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
 [resource]
 Button/colors/font_color = Color(0.3019608, 0.28235295, 0.2627451, 1)
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
@@ -2274,3 +2282,4 @@ Button/styles/normal = SubResource("StyleBoxFlat_qijjd")
 Button/styles/pressed = SubResource("StyleBoxFlat_denks")
 Label/colors/font_color = Color(0.3017391, 0.2821207, 0.26159468, 1)
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_gbaj8")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_rqugq")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dtjqexasavuu5"]
+[gd_scene load_steps=6 format=3 uid="uid://dl7k3igds1sod"]
 
 [ext_resource type="Script" uid="uid://bc1l7pp2kuqos" path="res://game_over_ui.gd" id="1_nwi6w"]
 [ext_resource type="FontFile" uid="uid://p4f8eglfukbh" path="res://assets/fonts/ThaleahFat.ttf" id="2_4fpvo"]
@@ -14,8 +14,11 @@ bg_color = Color(1, 0.46101677, 0.3927373, 1)
 script = ExtResource("1_nwi6w")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 1173.0
-offset_bottom = 649.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.7228208, 0.7228208, 0.7228208, 0.6666667)
 
 [node name="Label" type="Label" parent="."]
