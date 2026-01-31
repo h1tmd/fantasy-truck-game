@@ -43,9 +43,9 @@ func _on_game_over() -> void:
 func get_surface_type() -> String:
 	# Check which layer the player is over
 	var layers = {
-		"water": water_layer,
 		"environment": environments_layer,
 		"road": road_layer,
+		"water": water_layer,
 		"grass": grass_layer,
 	}
 
@@ -53,7 +53,7 @@ func get_surface_type() -> String:
 		var layer = layers[surface_name]
 		var cell = layer.local_to_map(layer.to_local(global_position))
 		
-		print("Checking layer ", surface_name, " at cell ", cell)
+		#print("Checking layer ", surface_name, " at cell ", cell)
 		var data = layer.get_cell_tile_data(cell)
 		if data:
 			return data.get_custom_data("surface")
@@ -107,7 +107,7 @@ func _ready() -> void:
 # -----------------------
 func _physics_process(delta: float) -> void:
 	var surface = get_surface_type()
-	print(surface)
+	#print(surface)
 	# --- Check for Game Over ---
 	if surface == "water":
 		_on_game_over()
@@ -149,12 +149,18 @@ func _physics_process(delta: float) -> void:
 	match get_surface_type():
 		"road":
 			effective_max_speed *= 1.0   # full speed
+			friction = 800
+		"forest":
+			effective_max_speed *= 0.9
+			friction = 1000
 		"grass":
 			effective_max_speed *= 0.6   # slower on grass
-		"environment":
-			effective_max_speed *= 1.2   # idk where is this environment
-	
-			
+			friction = 800
+		"rock":
+			effective_max_speed *= 0.8   # idk where is this environment
+			friction = 800
+		"ice":
+			friction = 100
 
 	
 	# Accelerate
