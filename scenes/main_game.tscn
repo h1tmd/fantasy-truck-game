@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://0a4sac7166s3"]
+[gd_scene load_steps=41 format=3 uid="uid://0a4sac7166s3"]
 
 [ext_resource type="PackedScene" uid="uid://bdkumy0hsg5qy" path="res://scenes/main_map.tscn" id="1_ipu61"]
 [ext_resource type="PackedScene" uid="uid://bo546vy8e6q7f" path="res://ui/minimap.tscn" id="2_307no"]
@@ -68,10 +68,10 @@ color = Color(0, 0, 0, 0)
 anchors_preset = 1
 anchor_top = 0.0
 anchor_bottom = 0.0
-offset_left = -27.0
-offset_top = 217.0
-offset_right = -27.0
-offset_bottom = 217.0
+offset_left = -24.0
+offset_top = 173.0
+offset_right = -24.0
+offset_bottom = 173.0
 grow_vertical = 1
 size_flags_horizontal = 8
 size_flags_vertical = 4
@@ -87,8 +87,8 @@ offset_bottom = 297.0
 grow_horizontal = 0
 
 [node name="Minimap" parent="CanvasLayer/Control" instance=ExtResource("2_307no")]
-position = Vector2(-266, 20)
-scale = Vector2(2, 2)
+position = Vector2(-222, 14.000004)
+scale = Vector2(1.8, 1.8)
 
 [node name="Main Map" parent="." instance=ExtResource("1_ipu61")]
 scale = Vector2(0.4, 0.4)
@@ -145,9 +145,9 @@ max_speed = 250.0
 [node name="CanvasLayer3" type="CanvasLayer" parent="Player"]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Player/CanvasLayer3"]
-offset_left = 178.0
+offset_left = 118.0
 offset_top = 21.0
-offset_right = 956.0
+offset_right = 554.0
 offset_bottom = 202.0
 theme = ExtResource("16_urnot")
 
@@ -197,14 +197,14 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="UpButton" type="TouchScreenButton" parent="Player/CanvasLayer2/joystickControl/Control"]
-position = Vector2(-249, -406)
-scale = Vector2(2, 2)
+position = Vector2(-174, -312)
+scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("7_6de02")
 action = "car_forward"
 
 [node name="DownButton" type="TouchScreenButton" parent="Player/CanvasLayer2/joystickControl/Control"]
-position = Vector2(-252, -217.99997)
-scale = Vector2(2, 2)
+position = Vector2(-177, -123.99997)
+scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("8_cybgu")
 action = "car_reverse"
 
@@ -218,14 +218,14 @@ offset_right = 40.0
 grow_vertical = 0
 
 [node name="LeftButton" type="TouchScreenButton" parent="Player/CanvasLayer2/joystickControl/Control2"]
-position = Vector2(84, -273)
-scale = Vector2(2, 2)
+position = Vector2(40, -141)
+scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("4_ibnub")
 action = "car_left"
 
 [node name="RightButton" type="TouchScreenButton" parent="Player/CanvasLayer2/joystickControl/Control2"]
-position = Vector2(383, -273)
-scale = Vector2(2, 2)
+position = Vector2(267, -141)
+scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("6_5wboo")
 action = "car_right"
 
