@@ -140,7 +140,7 @@ location_res = ExtResource("16_ihbck")
 [node name="Player" parent="." instance=ExtResource("2_ygxny")]
 position = Vector2(2901, 2273)
 scale = Vector2(1.6, 1.6)
-max_speed = 250.0
+max_speed = 400.0
 
 [node name="CanvasLayer3" type="CanvasLayer" parent="Player"]
 
