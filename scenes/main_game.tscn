@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://0a4sac7166s3"]
+[gd_scene load_steps=51 format=3 uid="uid://0a4sac7166s3"]
 
 [ext_resource type="PackedScene" uid="uid://bdkumy0hsg5qy" path="res://scenes/main_map.tscn" id="1_ipu61"]
 [ext_resource type="PackedScene" uid="uid://bo546vy8e6q7f" path="res://ui/minimap.tscn" id="2_307no"]
@@ -30,6 +30,7 @@
 [ext_resource type="AudioStream" uid="uid://c4hopkk5ootqk" path="res://assets/sfx/truck-reverse-beeper-88017.mp3" id="26_dcudo"]
 [ext_resource type="PackedScene" uid="uid://dyddatpbos0vm" path="res://assets/sfx/bgMusic.tscn" id="27_x3ega"]
 [ext_resource type="PackedScene" uid="uid://bf88h4dl8rw15" path="res://actors/slime/slime.tscn" id="30_rr87q"]
+[ext_resource type="PackedScene" uid="uid://bgxd1roh177g8" path="res://actors/skeleton/skeleton.tscn" id="31_dp0eu"]
 
 [sub_resource type="GDScript" id="GDScript_74lek"]
 script/source = "extends ProgressBar
@@ -385,6 +386,9 @@ scale = Vector2(1.6, 1.6)
 
 [node name="slime" parent="." instance=ExtResource("30_rr87q")]
 position = Vector2(2748, 2208)
+
+[node name="skeleton" parent="." instance=ExtResource("31_dp0eu")]
+position = Vector2(3023, 2191)
 
 [connection signal="pressed" from="Player/CanvasLayer4/PauseMenu/Panel/VBoxContainer/resumeBtn" to="Player/CanvasLayer4/PauseMenu" method="_on_resume_btn_pressed"]
 [connection signal="pressed" from="Player/CanvasLayer4/PauseMenu/Panel/VBoxContainer/optionsBtn" to="Player/CanvasLayer4/PauseMenu" method="_on_options_btn_pressed"]

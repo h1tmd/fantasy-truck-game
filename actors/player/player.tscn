@@ -428,3 +428,6 @@ position_smoothing_enabled = true
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_ax26v")
 debug_color = Color(0.8783921, 0.0003900516, 0.8290185, 0.41960785)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
