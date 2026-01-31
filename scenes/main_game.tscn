@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://0a4sac7166s3"]
+[gd_scene load_steps=39 format=3 uid="uid://0a4sac7166s3"]
 
 [ext_resource type="PackedScene" uid="uid://bdkumy0hsg5qy" path="res://scenes/main_map.tscn" id="1_ipu61"]
 [ext_resource type="PackedScene" uid="uid://bo546vy8e6q7f" path="res://ui/minimap.tscn" id="2_307no"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://0q5hmmmglakc" path="res://scenes/control.gd" id="3_vnsdt"]
 [ext_resource type="Script" uid="uid://bvk41wm4a8q8" path="res://scenes/pause_menu.gd" id="4_70vka"]
 [ext_resource type="Texture2D" uid="uid://hxku00xy0ago" path="res://ui/addons/arrow_left.png" id="4_ibnub"]
-[ext_resource type="Script" uid="uid://dlj2erl5at31j" path="res://ui/control_button.gd" id="4_ikqpi"]
 [ext_resource type="Script" uid="uid://cs68ig6opox8r" path="res://scenes/button.gd" id="5_2l77h"]
 [ext_resource type="Texture2D" uid="uid://baoonk83ongqv" path="res://ui/addons/arrow_right.png" id="6_5wboo"]
 [ext_resource type="PackedScene" uid="uid://csa6wbw37bdv4" path="res://actors/components/location_area.tscn" id="6_ygxny"]
@@ -31,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://dyddatpbos0vm" path="res://assets/sfx/bgMusic.tscn" id="27_x3ega"]
 [ext_resource type="PackedScene" uid="uid://bf88h4dl8rw15" path="res://actors/slime/slime.tscn" id="30_rr87q"]
 [ext_resource type="PackedScene" uid="uid://bgxd1roh177g8" path="res://actors/skeleton/skeleton.tscn" id="31_dp0eu"]
+[ext_resource type="PackedScene" uid="uid://q3iq8xbgea8m" path="res://actors/skeleton/spawner.tscn" id="32_urnot"]
 
 [sub_resource type="GDScript" id="GDScript_74lek"]
 script/source = "extends ProgressBar
@@ -38,33 +38,6 @@ script/source = "extends ProgressBar
 
 # Called when the node enters the scene tree for the first time.
 "
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibnub"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6de02"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cybgu"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wdxbp"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5wboo"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_on6n6"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x3ega"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dcudo"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6de02"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_307no"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rr87q"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dp0eu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nqdth"]
 bg_color = Color(1, 1, 1, 1)
@@ -208,79 +181,29 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_vnsdt")
 
-[node name="LeftButton" type="Button" parent="Player/CanvasLayer2/joystickControl"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 65.0
-offset_top = -152.0
-offset_right = 165.0
-offset_bottom = -52.0
-grow_vertical = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_ibnub")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_6de02")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_cybgu")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wdxbp")
-icon = ExtResource("4_ibnub")
-script = ExtResource("4_ikqpi")
+[node name="LeftButton" type="TouchScreenButton" parent="Player/CanvasLayer2/joystickControl"]
+position = Vector2(28, 463)
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("4_ibnub")
+action = "car_left"
 
-[node name="RightButton" type="Button" parent="Player/CanvasLayer2/joystickControl"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 212.0
-offset_top = -152.0
-offset_right = 335.0
-offset_bottom = -52.0
-grow_vertical = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_5wboo")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_on6n6")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_x3ega")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_dcudo")
-icon = ExtResource("6_5wboo")
-script = ExtResource("4_ikqpi")
+[node name="RightButton" type="TouchScreenButton" parent="Player/CanvasLayer2/joystickControl"]
+position = Vector2(178, 463)
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("6_5wboo")
+action = "car_right"
 
-[node name="UpButton" type="Button" parent="Player/CanvasLayer2/joystickControl"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -216.0
-offset_top = -258.0
-offset_right = -116.0
-offset_bottom = -151.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_6de02")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_307no")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_rr87q")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_dp0eu")
-icon = ExtResource("7_6de02")
-script = ExtResource("4_ikqpi")
+[node name="UpButton" type="TouchScreenButton" parent="Player/CanvasLayer2/joystickControl"]
+position = Vector2(938, 362)
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("7_6de02")
+action = "car_forward"
 
-[node name="DownButton" type="Button" parent="Player/CanvasLayer2/joystickControl"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -216.0
-offset_top = -141.0
-offset_right = -116.0
-offset_bottom = -34.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_6de02")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_307no")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_rr87q")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_dp0eu")
-icon = ExtResource("8_cybgu")
-script = ExtResource("4_ikqpi")
+[node name="DownButton" type="TouchScreenButton" parent="Player/CanvasLayer2/joystickControl"]
+position = Vector2(935, 494.00003)
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("8_cybgu")
+action = "car_reverse"
 
 [node name="Quest Reward Popup" parent="Player/CanvasLayer2" instance=ExtResource("2_dcudo")]
 visible = false
@@ -355,8 +278,8 @@ text = "Exit"
 [node name="PauseBtn" type="Button" parent="Player/CanvasLayer4"]
 offset_left = 21.999998
 offset_top = 28.999996
-offset_right = 64.0
-offset_bottom = 71.0
+offset_right = 99.0
+offset_bottom = 106.0
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_cybgu")
 theme_override_styles/pressed = SubResource("StyleBoxLine_5wboo")
@@ -390,6 +313,17 @@ position = Vector2(3148, 2179)
 [node name="slime" parent="." instance=ExtResource("30_rr87q")]
 position = Vector2(2643, 2205)
 
+[node name="spawner" parent="." instance=ExtResource("32_urnot")]
+skeleton_scene = ExtResource("31_dp0eu")
+
+[connection signal="pressed" from="Player/CanvasLayer2/joystickControl/LeftButton" to="Player/CanvasLayer2/joystickControl" method="_on_left_button_pressed"]
+[connection signal="released" from="Player/CanvasLayer2/joystickControl/LeftButton" to="Player/CanvasLayer2/joystickControl" method="_on_left_button_released"]
+[connection signal="pressed" from="Player/CanvasLayer2/joystickControl/RightButton" to="Player/CanvasLayer2/joystickControl" method="_on_right_button_pressed"]
+[connection signal="released" from="Player/CanvasLayer2/joystickControl/RightButton" to="Player/CanvasLayer2/joystickControl" method="_on_right_button_released"]
+[connection signal="pressed" from="Player/CanvasLayer2/joystickControl/UpButton" to="Player/CanvasLayer2/joystickControl" method="_on_up_button_pressed"]
+[connection signal="released" from="Player/CanvasLayer2/joystickControl/UpButton" to="Player/CanvasLayer2/joystickControl" method="_on_up_button_released"]
+[connection signal="pressed" from="Player/CanvasLayer2/joystickControl/DownButton" to="Player/CanvasLayer2/joystickControl" method="_on_down_button_pressed"]
+[connection signal="released" from="Player/CanvasLayer2/joystickControl/DownButton" to="Player/CanvasLayer2/joystickControl" method="_on_down_button_released"]
 [connection signal="pressed" from="Player/CanvasLayer4/PauseMenu/Panel/VBoxContainer/resumeBtn" to="Player/CanvasLayer4/PauseMenu" method="_on_resume_btn_pressed"]
 [connection signal="pressed" from="Player/CanvasLayer4/PauseMenu/Panel/VBoxContainer/optionsBtn" to="Player/CanvasLayer4/PauseMenu" method="_on_options_btn_pressed"]
 [connection signal="pressed" from="Player/CanvasLayer4/PauseMenu/Panel/VBoxContainer/exitBtn" to="Player/CanvasLayer4/PauseMenu" method="_on_exit_btn_pressed"]

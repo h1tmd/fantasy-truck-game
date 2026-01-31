@@ -12,7 +12,11 @@ var damage_taken_slime = 10
 
 var truck_damage = 0
 
-
+# Button states
+#var input_forward := false
+#var input_reverse := false
+#var input_left := false
+#var input_right := false
 # --- UI References ---
 @onready var durability_bar := $CanvasLayer3/VBoxContainer/DurabilityBar
 @onready var boost_bar := $CanvasLayer3/VBoxContainer/BoostLabel
@@ -75,6 +79,12 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	var throttle := Input.get_action_strength("car_forward") - Input.get_action_strength("car_reverse")
 	var steering := Input.get_action_strength("car_right") - Input.get_action_strength("car_left")
+	
+	#var throttle := (1 if input_forward else 0) - (1 if input_reverse else 0)
+	#var steering := (1 if input_right else 0) - (1 if input_left else 0)
+
+	
+		
 	slime_attack()
 	skeleton_attack()
 	if (damage_taken_skeleton % 50 == 0) :

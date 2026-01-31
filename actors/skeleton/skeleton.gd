@@ -6,7 +6,13 @@ var player = null
 
 func _physics_process(_delta):
 	if player_chase:
+
 		position += (player.position - position)/speed
+		rotation = (player.global_position - global_position).angle()
+		rotation += PI / 2   # if sprite faces UP
+		
+		# Your existing movement	
+		#position += (player.position - position) / speed
 		
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
