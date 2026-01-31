@@ -1,6 +1,15 @@
 # Player.gd
 class_name Player
 extends CharacterBody2D
+# --- damage ---
+var enemy_in_range = false
+var skeleton_in_range = false
+var enemy_attack_cooldown = false
+var health = 100
+var player_alive = true
+var damage_taken_skeleton = 10
+var damage_taken_slime = 10
+var truck_damage = 0
 
 @onready var road_layer: TileMapLayer = get_node("/root/Main Game/Main Map/Road")
 @onready var grass_layer: TileMapLayer = get_node("/root/Main Game/Main Map/Grass")
@@ -117,6 +126,19 @@ func _physics_process(delta: float) -> void:
 	 
 	var throttle := Input.get_action_strength("car_forward") - Input.get_action_strength("car_reverse")
 	var steering := Input.get_action_strength("car_right") - Input.get_action_strength("car_left")
+	
+	#var throttle := (1 if input_forward else 0) - (1 if input_reverse else 0)
+	#var steering := (1 if input_right else 0) - (1 if input_left else 0)
+
+	
+		
+	slime_attack()
+	skeleton_attack()
+	if (damage_taken_skeleton % 50 == 0) :
+		truck_damage += 10
+	if (damage_taken_slime % 50 == 0) :
+		truck_damage += 10
+	
 	if throttle > 0:
 		if not engine.playing: engine.play()
 		accel.stop()
@@ -187,7 +209,7 @@ func _physics_process(delta: float) -> void:
 	
 # -----------------------
 func _update_ui() -> void:
-	durability_bar.value = stats["durability"]
+	durability_bar.value = stats["durability"] - truck_damage
 	boost_bar.value = stats["boost"] * 100 # 0.0–1.0 -> 0–100%
 	shield_bar.value = stats["shield"] * 100
 	gas_bar.value = stats["gas"] - reduce_gas
@@ -276,3 +298,41 @@ func recover_durability():
 	stats["durability"] = durability_bar.max_value
 
 # -----------------------
+
+
+func player():
+	pass
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body.has_method("slime"):
+		enemy_in_range = false
+	if body.has_method("skeleton"):
+		skeleton_in_range = false
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.has_method("slime") :
+		enemy_in_range = true
+	if body.has_method("skeleton"):
+		skeleton_in_range = true
+
+func slime_attack():
+	if enemy_in_range:
+		damage_taken_slime += 1
+		#print(damage_taken_slime)
+		
+func skeleton_attack():
+	if skeleton_in_range:
+		damage_taken_skeleton += 1
+		#print(damage_taken_skeleton)
+
+
+func _on_bumper_body_entered(body: Node2D) -> void:
+	if body.has_method("slime") :
+		enemy_in_range = true
+		
+		body.queue_free()
+		enemy_in_range = false
+	if body.has_method("skeleton") :
+		skeleton_in_range = true
+		body.queue_free()
+		skeleton_in_range = false
