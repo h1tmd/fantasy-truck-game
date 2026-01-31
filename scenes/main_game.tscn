@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://0a4sac7166s3"]
+[gd_scene load_steps=40 format=3 uid="uid://0a4sac7166s3"]
 
 [ext_resource type="PackedScene" uid="uid://bdkumy0hsg5qy" path="res://scenes/main_map.tscn" id="1_ipu61"]
 [ext_resource type="PackedScene" uid="uid://bo546vy8e6q7f" path="res://ui/minimap.tscn" id="2_307no"]
@@ -22,6 +22,7 @@
 [ext_resource type="Resource" uid="uid://6f47f14vd58t" path="res://data/locations/library.tres" id="14_sp04v"]
 [ext_resource type="Resource" uid="uid://4xiter26ufx3" path="res://data/locations/lumberjack.tres" id="15_ihbck"]
 [ext_resource type="Resource" uid="uid://xv0bnonlvumt" path="res://data/locations/marketplace.tres" id="16_ihbck"]
+[ext_resource type="Theme" uid="uid://dj6othhcq5418" path="res://ui/theme.tres" id="16_urnot"]
 [ext_resource type="PackedScene" uid="uid://1a63ja7as1i7" path="res://ui/quest_ui.tscn" id="17_vnsdt"]
 [ext_resource type="Texture2D" uid="uid://cpy4swj7r5b2p" path="res://assets/icons/pause-icon.png" id="23_dcudo"]
 [ext_resource type="AudioStream" uid="uid://1vwgi5s4k7bu" path="res://assets/sfx/car-engine-noise-321224.mp3" id="24_on6n6"]
@@ -142,13 +143,11 @@ max_speed = 250.0
 [node name="CanvasLayer3" type="CanvasLayer" parent="Player"]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Player/CanvasLayer3"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 89.0
-grow_horizontal = 2
+offset_left = 178.0
+offset_top = 21.0
+offset_right = 541.0
+offset_bottom = 195.0
+theme = ExtResource("16_urnot")
 
 [node name="BoostLabel" type="ProgressBar" parent="Player/CanvasLayer3/VBoxContainer"]
 modulate = Color(0.49803922, 1, 1, 1)
@@ -168,10 +167,12 @@ script = SubResource("GDScript_74lek")
 
 [node name="PointsLabel" type="Label" parent="Player/CanvasLayer3/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
 text = "Points: 0"
-horizontal_alignment = 1
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="Player"]
+visible = false
 
 [node name="joystickControl" type="Control" parent="Player/CanvasLayer2"]
 layout_mode = 3
