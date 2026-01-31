@@ -1,4 +1,5 @@
 # Player.gd
+
 class_name Player
 extends CharacterBody2D
 # --- damage ---
@@ -10,6 +11,7 @@ var player_alive = true
 var damage_taken_skeleton = 10
 var damage_taken_slime = 10
 var truck_damage = 0
+var hit = false
 
 @onready var road_layer: TileMapLayer = get_node("/root/Main Game/Main Map/Road")
 @onready var grass_layer: TileMapLayer = get_node("/root/Main Game/Main Map/Grass")
@@ -78,7 +80,7 @@ var stats := {
 	"durability": 100.0, # vehicle health
 	"boost": 0.0, # speed multiplier
 	"shield": 0.0, # damage reduction (0–1)
-	"gas": 1500.0,
+	"gas": 1700.0,
 	"points": 0, # game points
 }
 
@@ -105,7 +107,7 @@ func _ready() -> void:
 	durability_bar.max_value = 100
 	boost_bar.max_value = 100
 	shield_bar.max_value = 100
-	gas_bar.max_value = 1500.0
+	gas_bar.max_value = 1700.0
 
 	# Initial UI update
 	_update_ui()
@@ -134,10 +136,10 @@ func _physics_process(delta: float) -> void:
 		
 	slime_attack()
 	skeleton_attack()
-	if (damage_taken_skeleton % 50 == 0) :
-		truck_damage += 10
-	if (damage_taken_slime % 50 == 0) :
-		truck_damage += 10
+	#if (damage_taken_skeleton % 50 == 0) :
+		#truck_damage += 10
+	#if (damage_taken_slime % 50 == 0) :
+		#truck_damage += 10
 	
 	if throttle > 0:
 		if not engine.playing: engine.play()
@@ -155,7 +157,7 @@ func _physics_process(delta: float) -> void:
 		
 	var gas_reduction := (Input.get_action_strength("car_forward") + Input.get_action_strength("car_reverse"))
 	reduce_gas += gas_reduction * 0.5
-	
+	stats["gas"] -= throttle
 	#print(throttle)
 	#var reduce :=  100 - throttle
 	#print(gas_reduction)S
@@ -209,11 +211,14 @@ func _physics_process(delta: float) -> void:
 	
 # -----------------------
 func _update_ui() -> void:
-	durability_bar.value = stats["durability"] - truck_damage
+	durability_bar.value = stats["durability"] 
 	boost_bar.value = stats["boost"] * 100 # 0.0–1.0 -> 0–100%
 	shield_bar.value = stats["shield"] * 100
-	gas_bar.value = stats["gas"] - reduce_gas
-
+	gas_bar.value = stats["gas"]
+	
+	
+	
+	
 # -----------------------
 # Example skill / stat functions
 
@@ -297,6 +302,16 @@ func increase_durability(amount: float):
 func recover_durability():
 	stats["durability"] = durability_bar.max_value
 
+func decrease_durability():
+	if hit == true :
+		truck_damage += 1
+		stats['durability'] -= truck_damage
+		if stats['durability']  <= 0:
+			_on_game_over()
+		#if stats['durability'] <= 0:
+		#_on_game_over()
+	print(stats['durability'] )
+	
 # -----------------------
 
 
@@ -309,11 +324,18 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		enemy_in_range = false
 	if body.has_method("skeleton"):
 		skeleton_in_range = false
+		
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("slime") :
 		enemy_in_range = true
+		hit = true
+		decrease_durability()
 	if body.has_method("skeleton"):
 		skeleton_in_range = true
+		hit = true
+		decrease_durability()
+		
+		
 
 func slime_attack():
 	if enemy_in_range:
@@ -329,10 +351,12 @@ func skeleton_attack():
 func _on_bumper_body_entered(body: Node2D) -> void:
 	if body.has_method("slime") :
 		enemy_in_range = true
-		
+		stats["gas"] += 100
 		body.queue_free()
 		enemy_in_range = false
+		
 	if body.has_method("skeleton") :
 		skeleton_in_range = true
+		stats["gas"] += 100
 		body.queue_free()
 		skeleton_in_range = false

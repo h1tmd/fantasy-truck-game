@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://q3iq8xbgea8m"]
+[gd_scene load_steps=3 format=3 uid="uid://q3iq8xbgea8m"]
 
 [ext_resource type="Script" uid="uid://dingly3ghe55n" path="res://spawner.gd" id="1_2723x"]
+[ext_resource type="PackedScene" uid="uid://bgxd1roh177g8" path="res://actors/skeleton/skeleton.tscn" id="2_vaovp"]
 
 [node name="spawner" type="Node2D"]
 script = ExtResource("1_2723x")
+skeleton_scene = ExtResource("2_vaovp")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

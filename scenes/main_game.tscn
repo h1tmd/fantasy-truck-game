@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://0a4sac7166s3"]
+[gd_scene load_steps=40 format=3 uid="uid://0a4sac7166s3"]
 
 [ext_resource type="PackedScene" uid="uid://bdkumy0hsg5qy" path="res://scenes/main_map.tscn" id="1_ipu61"]
 [ext_resource type="PackedScene" uid="uid://bo546vy8e6q7f" path="res://ui/minimap.tscn" id="2_307no"]
@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://dyddatpbos0vm" path="res://assets/sfx/bgMusic.tscn" id="27_x3ega"]
 [ext_resource type="PackedScene" uid="uid://bf88h4dl8rw15" path="res://actors/slime/slime.tscn" id="30_rr87q"]
 [ext_resource type="PackedScene" uid="uid://bgxd1roh177g8" path="res://actors/skeleton/skeleton.tscn" id="31_dp0eu"]
+[ext_resource type="PackedScene" uid="uid://drdfgplmq2suc" path="res://actors/skeleton/slime_spawner.tscn" id="32_4e2rb"]
 [ext_resource type="PackedScene" uid="uid://q3iq8xbgea8m" path="res://actors/skeleton/spawner.tscn" id="32_urnot"]
 
 [sub_resource type="GDScript" id="GDScript_74lek"]
@@ -315,7 +316,26 @@ position = Vector2(3148, 2179)
 position = Vector2(2643, 2205)
 
 [node name="spawner" parent="." instance=ExtResource("32_urnot")]
-skeleton_scene = ExtResource("31_dp0eu")
+
+[node name="slimeSpawner" parent="." instance=ExtResource("32_4e2rb")]
+
+[node name="skeleton2" parent="." instance=ExtResource("31_dp0eu")]
+position = Vector2(4335, 4644)
+
+[node name="skeleton3" parent="." instance=ExtResource("31_dp0eu")]
+position = Vector2(5182, 4467)
+
+[node name="skeleton4" parent="." instance=ExtResource("31_dp0eu")]
+position = Vector2(6289, 4324)
+
+[node name="slime2" parent="." instance=ExtResource("30_rr87q")]
+position = Vector2(5930, 5040)
+
+[node name="slime3" parent="." instance=ExtResource("30_rr87q")]
+position = Vector2(5180, 5369)
+
+[node name="slime4" parent="." instance=ExtResource("30_rr87q")]
+position = Vector2(4744, 4146)
 
 [connection signal="pressed" from="Player/CanvasLayer2/joystickControl/LeftButton" to="Player/CanvasLayer2/joystickControl" method="_on_left_button_pressed"]
 [connection signal="released" from="Player/CanvasLayer2/joystickControl/LeftButton" to="Player/CanvasLayer2/joystickControl" method="_on_left_button_released"]
