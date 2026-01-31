@@ -35,7 +35,7 @@ func _on_game_over() -> void:
 	velocity = Vector2.ZERO
 	set_physics_process(false)
 	 # Load the GameOver scene and show it
-	var game_over_ui = load("res://ui/GameOver.tscn").instantiate()
+	var game_over_ui = load("res://game_over_ui.tscn").instantiate()
 	get_tree().current_scene.add_child(game_over_ui)
 	game_over_ui.show_menu()
 	
@@ -43,23 +43,12 @@ func _on_game_over() -> void:
 func get_surface_type() -> String:
 	# Check which layer the player is over
 	var layers = {
+		"water": water_layer,
+		"environment": environments_layer,
 		"road": road_layer,
 		"grass": grass_layer,
-		"water": water_layer,
-		"environment": environments_layer
 	}
 
-	#for surface_name in layers.keys():
-		#var layer = layers[surface_name]
-		#var cell = layer.local_to_map(layer.to_local(global_position))
-		##checking layer
-		#print("Checking layer ", surface_name, " at cell ", cell)
-		#var data = layer.get_cell_tile_data(cell)
-		#if data:
-			#return data.get_custom_data("surface")
-	#
-	#return "road"  # default fallback
-	
 	for surface_name in layers.keys():
 		var layer = layers[surface_name]
 		var cell = layer.local_to_map(layer.to_local(global_position))
@@ -118,6 +107,7 @@ func _ready() -> void:
 # -----------------------
 func _physics_process(delta: float) -> void:
 	var surface = get_surface_type()
+	print(surface)
 	# --- Check for Game Over ---
 	if surface == "water":
 		_on_game_over()
