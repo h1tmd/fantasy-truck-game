@@ -243,9 +243,21 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func slime_attack():
 	if enemy_in_range:
 		damage_taken_slime += 1
-		print(damage_taken_slime)
+		#print(damage_taken_slime)
 		
 func skeleton_attack():
 	if skeleton_in_range:
 		damage_taken_skeleton += 1
-		print(damage_taken_skeleton)
+		#print(damage_taken_skeleton)
+
+
+func _on_bumper_body_entered(body: Node2D) -> void:
+	if body.has_method("slime") :
+		enemy_in_range = true
+		
+		body.queue_free()
+		enemy_in_range = false
+	if body.has_method("skeleton") :
+		skeleton_in_range = true
+		body.queue_free()
+		skeleton_in_range = false
