@@ -114,7 +114,8 @@ position = Vector2(2403, 443.00006)
 location_res = ExtResource("11_8xp80")
 
 [node name="Fountain" parent="Locations" instance=ExtResource("6_ygxny")]
-position = Vector2(2913.0005, 1985.9999)
+position = Vector2(2910, 1983)
+scale = Vector2(2, 2)
 location_res = ExtResource("9_nqdth")
 
 [node name="Guild" parent="Locations" instance=ExtResource("6_ygxny")]
