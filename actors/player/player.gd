@@ -157,7 +157,7 @@ func _physics_process(delta: float) -> void:
 		
 	var gas_reduction := (Input.get_action_strength("car_forward") + Input.get_action_strength("car_reverse"))
 	reduce_gas += gas_reduction * 0.5
-	stats["gas"] -= throttle
+	#stats["gas"] -= throttle
 	#print(throttle)
 	#var reduce :=  100 - throttle
 	#print(gas_reduction)S
@@ -190,7 +190,7 @@ func _physics_process(delta: float) -> void:
 	# Accelerate
 	if reduce_gas >= stats["gas"]:
 		throttle = 0
-		
+	print(reduce_gas)
 	if throttle != 0:
 		var target_speed = effective_max_speed if throttle > 0 else reverse_speed
 		velocity = velocity.move_toward(
@@ -214,7 +214,7 @@ func _update_ui() -> void:
 	durability_bar.value = stats["durability"] 
 	boost_bar.value = stats["boost"] * 100 # 0.0–1.0 -> 0–100%
 	shield_bar.value = stats["shield"] * 100
-	gas_bar.value = stats["gas"]
+	gas_bar.value = stats["gas"] - reduce_gas
 	
 	
 	
@@ -351,12 +351,12 @@ func skeleton_attack():
 func _on_bumper_body_entered(body: Node2D) -> void:
 	if body.has_method("slime") :
 		enemy_in_range = true
-		stats["gas"] += 100
+		reduce_gas = max(reduce_gas - 100, 0)
 		body.queue_free()
 		enemy_in_range = false
 		
 	if body.has_method("skeleton") :
 		skeleton_in_range = true
-		stats["gas"] += 100
+		reduce_gas = max(reduce_gas - 100, 0)
 		body.queue_free()
 		skeleton_in_range = false
