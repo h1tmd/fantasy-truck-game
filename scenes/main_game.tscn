@@ -182,29 +182,50 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_vnsdt")
 
-[node name="LeftButton" type="TouchScreenButton" parent="Player/CanvasLayer2/joystickControl"]
-position = Vector2(28, 463)
-scale = Vector2(1.5, 1.5)
-texture_normal = ExtResource("4_ibnub")
-action = "car_left"
+[node name="Control" type="Control" parent="Player/CanvasLayer2/joystickControl"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
 
-[node name="RightButton" type="TouchScreenButton" parent="Player/CanvasLayer2/joystickControl"]
-position = Vector2(178, 463)
-scale = Vector2(1.5, 1.5)
-texture_normal = ExtResource("6_5wboo")
-action = "car_right"
-
-[node name="UpButton" type="TouchScreenButton" parent="Player/CanvasLayer2/joystickControl"]
-position = Vector2(938, 362)
+[node name="UpButton" type="TouchScreenButton" parent="Player/CanvasLayer2/joystickControl/Control"]
+position = Vector2(-151, -272)
 scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("7_6de02")
 action = "car_forward"
 
-[node name="DownButton" type="TouchScreenButton" parent="Player/CanvasLayer2/joystickControl"]
-position = Vector2(935, 494.00003)
+[node name="DownButton" type="TouchScreenButton" parent="Player/CanvasLayer2/joystickControl/Control"]
+position = Vector2(-154, -139.99997)
 scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("8_cybgu")
 action = "car_reverse"
+
+[node name="Control2" type="Control" parent="Player/CanvasLayer2/joystickControl"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="LeftButton" type="TouchScreenButton" parent="Player/CanvasLayer2/joystickControl/Control2"]
+position = Vector2(19, -140)
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("4_ibnub")
+action = "car_left"
+
+[node name="RightButton" type="TouchScreenButton" parent="Player/CanvasLayer2/joystickControl/Control2"]
+position = Vector2(169, -140)
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("6_5wboo")
+action = "car_right"
 
 [node name="Quest Reward Popup" parent="Player/CanvasLayer2" instance=ExtResource("2_dcudo")]
 visible = false
@@ -317,14 +338,14 @@ position = Vector2(2643, 2205)
 [node name="spawner" parent="." instance=ExtResource("32_urnot")]
 skeleton_scene = ExtResource("31_dp0eu")
 
-[connection signal="pressed" from="Player/CanvasLayer2/joystickControl/LeftButton" to="Player/CanvasLayer2/joystickControl" method="_on_left_button_pressed"]
-[connection signal="released" from="Player/CanvasLayer2/joystickControl/LeftButton" to="Player/CanvasLayer2/joystickControl" method="_on_left_button_released"]
-[connection signal="pressed" from="Player/CanvasLayer2/joystickControl/RightButton" to="Player/CanvasLayer2/joystickControl" method="_on_right_button_pressed"]
-[connection signal="released" from="Player/CanvasLayer2/joystickControl/RightButton" to="Player/CanvasLayer2/joystickControl" method="_on_right_button_released"]
-[connection signal="pressed" from="Player/CanvasLayer2/joystickControl/UpButton" to="Player/CanvasLayer2/joystickControl" method="_on_up_button_pressed"]
-[connection signal="released" from="Player/CanvasLayer2/joystickControl/UpButton" to="Player/CanvasLayer2/joystickControl" method="_on_up_button_released"]
-[connection signal="pressed" from="Player/CanvasLayer2/joystickControl/DownButton" to="Player/CanvasLayer2/joystickControl" method="_on_down_button_pressed"]
-[connection signal="released" from="Player/CanvasLayer2/joystickControl/DownButton" to="Player/CanvasLayer2/joystickControl" method="_on_down_button_released"]
+[connection signal="pressed" from="Player/CanvasLayer2/joystickControl/Control/UpButton" to="Player/CanvasLayer2/joystickControl" method="_on_up_button_pressed"]
+[connection signal="released" from="Player/CanvasLayer2/joystickControl/Control/UpButton" to="Player/CanvasLayer2/joystickControl" method="_on_up_button_released"]
+[connection signal="pressed" from="Player/CanvasLayer2/joystickControl/Control/DownButton" to="Player/CanvasLayer2/joystickControl" method="_on_down_button_pressed"]
+[connection signal="released" from="Player/CanvasLayer2/joystickControl/Control/DownButton" to="Player/CanvasLayer2/joystickControl" method="_on_down_button_released"]
+[connection signal="pressed" from="Player/CanvasLayer2/joystickControl/Control2/LeftButton" to="Player/CanvasLayer2/joystickControl" method="_on_left_button_pressed"]
+[connection signal="released" from="Player/CanvasLayer2/joystickControl/Control2/LeftButton" to="Player/CanvasLayer2/joystickControl" method="_on_left_button_released"]
+[connection signal="pressed" from="Player/CanvasLayer2/joystickControl/Control2/RightButton" to="Player/CanvasLayer2/joystickControl" method="_on_right_button_pressed"]
+[connection signal="released" from="Player/CanvasLayer2/joystickControl/Control2/RightButton" to="Player/CanvasLayer2/joystickControl" method="_on_right_button_released"]
 [connection signal="pressed" from="Player/CanvasLayer4/PauseMenu/Panel/VBoxContainer/resumeBtn" to="Player/CanvasLayer4/PauseMenu" method="_on_resume_btn_pressed"]
 [connection signal="pressed" from="Player/CanvasLayer4/PauseMenu/Panel/VBoxContainer/optionsBtn" to="Player/CanvasLayer4/PauseMenu" method="_on_options_btn_pressed"]
 [connection signal="pressed" from="Player/CanvasLayer4/PauseMenu/Panel/VBoxContainer/exitBtn" to="Player/CanvasLayer4/PauseMenu" method="_on_exit_btn_pressed"]
