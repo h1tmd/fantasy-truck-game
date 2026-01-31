@@ -3,10 +3,13 @@ class_name Player
 extends CharacterBody2D
 # --- damage ---
 var enemy_in_range = false
+var skeleton_in_range = false
 var enemy_attack_cooldown = false
 var health = 100
 var player_alive = true
-var damage_taken = 10
+var damage_taken_skeleton = 10
+var damage_taken_slime = 10
+
 var truck_damage = 0
 
 
@@ -73,7 +76,10 @@ func _physics_process(delta: float) -> void:
 	var throttle := Input.get_action_strength("car_forward") - Input.get_action_strength("car_reverse")
 	var steering := Input.get_action_strength("car_right") - Input.get_action_strength("car_left")
 	slime_attack()
-	if (damage_taken % 50 == 0) :
+	skeleton_attack()
+	if (damage_taken_skeleton % 50 == 0) :
+		truck_damage += 10
+	if (damage_taken_slime % 50 == 0) :
 		truck_damage += 10
 	
 	if throttle > 0:
@@ -225,13 +231,21 @@ func player():
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.has_method("slime"):
-		enemy_in_range = true
-		
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.has_method("slime"):
 		enemy_in_range = false
-		
+	if body.has_method("skeleton"):
+		skeleton_in_range = false
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.has_method("slime") :
+		enemy_in_range = true
+	if body.has_method("skeleton"):
+		skeleton_in_range = true
+
 func slime_attack():
 	if enemy_in_range:
-		damage_taken += 1
-		print(damage_taken)
+		damage_taken_slime += 1
+		print(damage_taken_slime)
+		
+func skeleton_attack():
+	if skeleton_in_range:
+		damage_taken_skeleton += 1
+		print(damage_taken_skeleton)

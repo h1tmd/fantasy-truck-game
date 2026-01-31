@@ -384,11 +384,11 @@ autoplay = true
 position = Vector2(2901, 2273)
 scale = Vector2(1.6, 1.6)
 
-[node name="slime" parent="." instance=ExtResource("30_rr87q")]
-position = Vector2(2748, 2208)
-
 [node name="skeleton" parent="." instance=ExtResource("31_dp0eu")]
-position = Vector2(3023, 2191)
+position = Vector2(3148, 2179)
+
+[node name="slime" parent="." instance=ExtResource("30_rr87q")]
+position = Vector2(2643, 2205)
 
 [connection signal="pressed" from="Player/CanvasLayer4/PauseMenu/Panel/VBoxContainer/resumeBtn" to="Player/CanvasLayer4/PauseMenu" method="_on_resume_btn_pressed"]
 [connection signal="pressed" from="Player/CanvasLayer4/PauseMenu/Panel/VBoxContainer/optionsBtn" to="Player/CanvasLayer4/PauseMenu" method="_on_options_btn_pressed"]
