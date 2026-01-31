@@ -108,7 +108,8 @@ func _ready() -> void:
 	boost_bar.max_value = 100
 	shield_bar.max_value = 100
 	gas_bar.max_value = 1700.0
-
+	
+	#apply_shield(100, 30)
 	# Initial UI update
 	_update_ui()
 
@@ -213,7 +214,7 @@ func _physics_process(delta: float) -> void:
 func _update_ui() -> void:
 	durability_bar.value = stats["durability"] 
 	boost_bar.value = stats["boost"] * 100 # 0.0–1.0 -> 0–100%
-	shield_bar.value = stats["shield"] * 100
+	shield_bar.value = stats["shield"]
 	gas_bar.value = stats["gas"] - reduce_gas
 	
 	
@@ -232,17 +233,19 @@ func apply_boost(amount: float, duration: float) -> void:
 
 func apply_shield(amount: float, duration: float) -> void:
 	stats["shield"] += amount
-	_update_ui()
+
 	await get_tree().create_timer(duration).timeout
 	stats["shield"] -= amount
-	_update_ui()
 
 
 func apply_damage(amount: float) -> void:
 	# Reduce damage by shield
-	var effective_damage = amount * (1.0 - stats["shield"])
-	stats["durability"] -= effective_damage
-	stats["durability"] = max(stats["durability"], 0)
+	var effective_damage = amount
+	if stats["shield"] > 0:
+		stats["shield"] -= effective_damage
+	else:
+		stats["durability"] -= effective_damage
+		stats["durability"] = max(stats["durability"], 0)
 	_update_ui()
 	if stats["durability"] <= 0:
 		print("Vehicle Destroyed!")
@@ -305,7 +308,9 @@ func recover_durability():
 func decrease_durability():
 	if hit == true :
 		truck_damage += 1
-		stats['durability'] -= truck_damage
+		#stats['durability'] -= truck_damage
+		apply_damage(truck_damage)
+		print("dr", stats["durability"])
 		if stats['durability']  <= 0:
 			_on_game_over()
 		#if stats['durability'] <= 0:
