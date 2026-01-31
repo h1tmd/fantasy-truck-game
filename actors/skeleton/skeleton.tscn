@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bjc8bh88y3h0b" path="res://assets/monsters/skeleton.png" id="2_yds0s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_enmns"]
-radius = 139.17615
+radius = 263.37234
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yds0s"]
 radius = 38.617825

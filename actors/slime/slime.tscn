@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://deodenqv61b3v" path="res://actors/components/detection_area.gd" id="3_qfp8a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fe133"]
-radius = 159.00314
+radius = 250.09798
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0iob3"]
 radius = 16.0
